@@ -1,0 +1,22 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="container">
+	<ul class="list-group">
+		<li class="list-group-item" ng-show="noPosts()"><strong>No
+				applications yet</strong><br></li>
+		<li class="list-group-item" ng-repeat="post in posts | orderBy: '-comments.length'">
+			<strong>{{post.title}}<span class="pull-right">{{post.comments.length}} comment(s)</span></strong><br>
+			<strong>Description: </strong><span class="text-muted">{{post.description}}</span><br>
+			<strong>Realty: </strong><span class="text-muted"><a href="/property/{{post.realty[0]._id}}">
+				{{post.realty[0].type}} in {{post.realty[0].city}} - {{post.realty[0].holder}}</a></span>
+			<span ng-show="isAdmin()"><br> <strong>User ID:</strong>
+				<span ng-repeat="user in post.owner" class="text-muted"> <a
+					href="/user/{{user}}">{{user}}</a>
+			</span> </span> <a ng-click="delete(post)" class="trash"><span
+				class="glyphicon glyphicon-trash pull-right"></span></a> <a
+			href="/post/{{post._id}}" class="show"><span
+				class="glyphicon glyphicon-th-large pull-right"></span></a> <a
+			href="/post/edit/{{post._id}}" class="show"><span
+				class="glyphicon glyphicon glyphicon-pencil pull-right"></span></a></li>
+	</ul>
+	<a class="btn btn-default btn-lg" href="/post/new"> Post Realty </a>
+</div>

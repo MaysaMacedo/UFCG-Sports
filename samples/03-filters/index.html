@@ -1,0 +1,143 @@
+<!doctype html>
+<html ng-app>
+ 
+<head>
+     <link href="../styles/bootstrap.min.css" rel="stylesheet" />
+    <link href="../styles/custom.css" rel="stylesheet" />
+    <script src="../support/angular.js"></script>
+    <link href="../styles/bootstrap-responsive.min.css" rel="stylesheet" /> 
+    <title>Filters</title>
+</head>
+
+<body >
+ <h2 class="text-center">Filters</h2>
+ <div class="container" ng-init="customers = 
+   [{name :'Dave', address: 'Waterford', balance: 2000, start_date: 1288323623006},
+   {name :'Dana', address: 'Wexford', balance: 3000, start_date: 1288323643006},
+   {name :'Fiona', address: 'Kilkenny', balance: 12000, start_date: 1299323623006}]">
+
+   <div class="row">
+       <div class="col-sm-6">
+          <h3>Find Customer - by index</h3>  
+    	    <input type="number" ng-model="customerNo" placeholder="Customer No.">
+          <br>Name : {{customers[customerNo].name }}
+    	    <br>Address: {{customers[customerNo].address | uppercase }}
+    	    <br>Balance :  <strong> {{ customers[customerNo].balance * 0.74| currency:'EUR$' }} </strong> 
+          <br>Start:  {{customers[customerNo].start_date | date }} ( {{customers[customerNo].start_date | date:'dd/MM/yyyy' }} or {{customers[customerNo].start_date | date:'EEE dd/MM/yy' }})
+     </div> 
+     <div class="col-sm-6">
+          <h3>Find Customer - by index</h3>  
+          <input type="number" ng-model="custNo" placeholder="Customer No.">
+          <div ng-show="custNo != null && custNo >=0 && custNo < customers.length" >
+            <br>Name : {{customers[custNo].name }}
+            <br>Address: {{customers[custNo].address | uppercase }}
+            <br>Balance :  <strong> {{ customers[custNo].balance * 0.74| currency:'EUR$' }} </strong> 
+            <br>Start:  {{customers[custNo].start_date | date }} ( {{customers[custNo].start_date | date:'dd/MM/yyyy' }} or {{customers[custNo].start_date | date:'EEE dd/MM/yy' }})
+          </div> 
+   </div>
+ </div>
+  <div class="row">
+   <div class="col-sm-6">
+     <h3>All Customers</h3>   
+      <table class="table table-bordered table-striped">
+        <tr><th>No.</th><th>Name</th><th>Balance</th></tr> 
+        <tr ng-repeat="cust in customers" >
+          <td>
+            {{$index}}
+          </td>
+          <td>
+            {{cust.name | lowercase }}
+          </td>
+          <td>
+            {{cust.balance | currency }}
+          </td>
+         </tr>
+       </table>
+   </div>
+   <div class="col-sm-6">
+     <h3>Customers - sorted by address</h3>   
+      <table class="table table-bordered table-striped">
+        <tr><th>No.</th><th>Name</th><th>Address</th></tr> 
+        <tr ng-repeat="cust in customers | orderBy:'address'" >
+          <td>
+            {{$index}}
+          </td>
+          <td>
+            {{cust.name }}
+          </td>
+          <td>
+            {{cust.address }}
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-sm-6">
+      <h3>Customers - balance (decreasing)</h3>   
+      <table class="table table-bordered">
+        <tr class="info" ><th>No.</th><th>Name</th><th>Balance</th></tr> 
+              <tr ng-repeat="cust in customers | orderBy:'-balance'" >
+                <td>
+                  {{$index}}
+                </td>
+                <td>
+                  {{cust.name }}
+                </td>
+                <td>
+                  {{cust.balance | currency }}
+                </td>
+         </tr>
+      </table>
+    </div>
+    <div class="col-sm-6">
+      <h3>Top two customers (balance)</h3>   
+      <table class="table table-bordered">
+          <tr class="success"><th>Name</th><th>Balance</th></tr> 
+                <tr ng-repeat="cust in customers | orderBy:'-balance' | limitTo:2" >
+                  <td>
+                    {{cust.name }}
+                  </td>
+                  <td>
+                    {{cust.balance | currency }}
+                  </td>
+           </tr>
+      </table>
+     </div>
+  </div>
+  <div class="row">
+     <div class="col-sm-6">
+       <h3>General search</h3> 
+        <input type="text" ng-model="searchText" placeholder="Search Text">
+         <table class="table table-bordered">
+            <tr class="danger"><th>Name</th><th>Address</th><th>Balance</th></tr> 
+                  <tr ng-repeat="cust in customers | filter:searchText" >
+                    <td>
+                      {{cust.name }}
+                    </td>
+                    <td>
+                      {{cust.address }}
+                    </td>
+                    <td>
+                       {{cust.balance | currency }}
+                    </td>
+             </tr>
+        </table>
+    </div>
+    <div class="col-sm-6">
+       <h3>Name search</h3> 
+      <input type="text" ng-model="nameText" placeholder="Name text">
+      <table class="table table-bordered">
+          <tr class="danger"><th>Name</th><th>Address</th></tr> 
+                <tr ng-repeat="cust in customers | filter:{name:nameText}" >
+                  <td>
+                    {{cust.name }}
+                  </td>
+                  <td>
+                    {{cust.address }}
+                  </td>
+           </tr>
+      </table>
+    </div>
+   </div>
+ </div>
+</body>
+</html>

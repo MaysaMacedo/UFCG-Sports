@@ -1,0 +1,41 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="container">
+	<ul class="list-group">
+		<li class="list-group-item" ng-show="noSales()"><strong>No
+				sales yet</strong><br></li>
+	</ul>
+
+	<div class="table-responsive" ng-hide="noSales()">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Client</th>
+					<th>Property</th>
+					<th>State</th>
+					<th ng-show="isAdmin()">User</th>
+					<th colspan="3"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr ng-repeat="sale in sales">
+					<td><a href="/client/{{sale.client[0]}}">{{sale.client[0]}}</a></td>
+					<td><a href="/property/{{sale.realty[0]}}">{{sale.realty[0]}}</a></td>
+					<td>{{sale.state}}</td>
+					<td ng-show="isAdmin()"><a href="/user/{{sale.owner[0]}}">{{sale.owner[0]}}</a></td>
+					<td>
+						<a class="btn btn-primary" href="/sale/{{sale._id}}" >Show</a>
+					</td>
+					<td>
+						<a class="btn btn-warning" href="/sale/edit/{{sale._id}}">Edit</a>
+					</td>
+					<td>
+						<button ng-click="delete(sale)" class="btn btn-danger" value="Show">Delete</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<a class="btn btn-default btn-lg btn-register" href="/sale/new">
+		New sale </a>
+</div>

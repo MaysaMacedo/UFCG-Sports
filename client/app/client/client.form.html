@@ -1,0 +1,50 @@
+<div class="form-group"
+	ng-class="{ 'has-success': form.name.$valid && submitted,
+                                            'has-error': form.name.$invalid && submitted }">
+	<label>Name</label> <input ng-readonly="readOnly" type="text" name="name" class="form-control"
+		ng-model="client.name" required />
+	<p class="help-block" ng-show="form.name.$error.required && submitted">A
+		name is required</p>
+</div>
+
+<div class="form-group"
+	ng-class="{ 'has-success': form.phone.$valid && submitted,
+                                            'has-error': form.phone.$invalid && submitted }">
+	<label>Phone</label> <input ng-readonly="readOnly" type="text" name="phone"
+		class="form-control" ng-model="client.phone" required />
+	<p class="help-block" ng-show="form.phone.$error.required && submitted">A
+		phone is required</p>
+</div>
+
+<div class="form-group"
+	ng-class="{ 'has-success': form.address.$valid && submitted,
+                                            'has-error': form.address.$invalid && submitted }">
+	<label>Address</label> <input ng-readonly="readOnly" type="text" name="address"
+		class="form-control" ng-model="client.address" required />
+	<p class="help-block"
+		ng-show="form.address.$error.required && submitted">A address is
+		required</p>
+</div>
+
+<div class="form-group"
+	ng-class="{ 'has-success': form.city.$valid && submitted,
+                                            'has-error': form.city.$invalid && submitted }">
+	<label>City</label> <input ng-readonly="readOnly" type="text" name="city" class="form-control"
+		ng-model="client.city" required />
+	<p class="help-block" ng-show="form.city.$error.required && submitted">A
+		city is required</p>
+</div>
+
+<div class="form-group"
+	ng-class="{ 'has-success': form.email.$valid && submitted,
+                                            'has-error': form.email.$invalid && submitted }">
+	<label>Email</label> <input ng-readonly="readOnly" type="email" name="email"
+		class="form-control" ng-model="client.email" required
+		mongoose-error />
+	<p class="help-block" ng-show="form.email.$error.email && submitted">
+		Doesn't look like a valid email.</p>
+	<p class="help-block" ng-show="form.email.$error.required && submitted">What's
+		your email address?</p>
+	<p class="help-block" ng-show="form.email.$error.mongoose">{{
+		errors.email }}</p>
+</div>

@@ -1,0 +1,57 @@
+<div class="form-group"
+	ng-class="{ 'has-success': form.type.$valid && submitted,
+                                            'has-error': form.type.$invalid && submitted }">
+	<label>Type</label> <input ng-readonly="readOnly" type="text" name="type" class="form-control"
+		ng-model="property.type" required />
+	<p class="help-block" ng-show="form.type.$error.required && submitted">A
+		type is required</p>
+</div>
+
+<div class="form-group"
+	ng-class="{ 'has-success': form.region.$valid && submitted,
+                                            'has-error': form.region.$invalid && submitted }">
+	<label>Region</label> <input ng-readonly="readOnly" type="text" name="region"
+		class="form-control" ng-model="property.region" required />
+	<p class="help-block" ng-show="form.region.$error.required && submitted">A
+		region is required</p>
+</div>
+
+<div class="form-group"
+	ng-class="{ 'has-success': form.city.$valid && submitted,
+                                            'has-error': form.city.$invalid && submitted }">
+	<label>City</label> <input ng-readonly="readOnly" type="text" name="city"
+		class="form-control" ng-model="property.city" required />
+	<p class="help-block"
+		ng-show="form.city.$error.required && submitted">A city is
+		required</p>
+</div>
+
+<div class="form-group"
+	ng-class="{ 'has-success': form.address.$valid && submitted,
+                                            'has-error': form.address.$invalid && submitted }">
+	<label>Address</label> <input ng-readonly="readOnly" type="text" name="address"
+		class="form-control" ng-model="property.address" required />
+	<p class="help-block"
+		ng-show="form.address.$error.required && submitted">A address is
+		required</p>
+</div>
+
+<div class="form-group"
+	ng-class="{ 'has-success': form.holder.$valid && submitted,
+                                            'has-error': form.holder.$invalid && submitted }">
+	<label>Holder</label> <input ng-readonly="readOnly" type="text" name="holder" class="form-control"
+		ng-model="property.holder" required />
+	<p class="help-block" ng-show="form.holder.$error.required && submitted">A
+		holder is required</p>
+</div>
+
+<div class="form-group" 
+	ng-class="{ 'has-success': form.frontImage.$valid && submitted,
+                                            'has-error': form.frontImage.$invalid && submitted }">
+	<label>Front Image</label> 
+		<input type="file" fileread="vm.uploadme" ng-hide="readOnly"/>
+	<p class="help-block" ng-show="form.frontImage.$error.required && submitted">A
+		frontImage is required</p>
+		
+	<img ng-show="readOnly" data-ng-src="{{property.frontImage}}" width="100%">
+</div>

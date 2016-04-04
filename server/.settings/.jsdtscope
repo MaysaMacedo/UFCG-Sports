@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="auth/local/|components/errors/|api/thing/|config/|auth/|api/user/|config/environment/|auth/google/|api/client/" kind="src" path=""/>
+	<classpathentry kind="src" path="api/client"/>
+	<classpathentry kind="src" path="api/thing"/>
+	<classpathentry kind="src" path="api/user"/>
+	<classpathentry excluding="local/|google/" kind="src" path="auth"/>
+	<classpathentry kind="src" path="auth/google"/>
+	<classpathentry kind="src" path="auth/local"/>
+	<classpathentry kind="src" path="components/errors"/>
+	<classpathentry excluding="environment/" kind="src" path="config"/>
+	<classpathentry kind="src" path="config/environment"/>
+	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

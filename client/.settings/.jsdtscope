@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="client/|admin/|account/login/|account/settings/|account/signup/|main/|account/" kind="src" path="app"/>
+	<classpathentry excluding="login/|settings/|signup/" kind="src" path="app/account"/>
+	<classpathentry kind="src" path="app/account/login"/>
+	<classpathentry kind="src" path="app/account/settings"/>
+	<classpathentry kind="src" path="app/account/signup"/>
+	<classpathentry kind="src" path="app/admin"/>
+	<classpathentry kind="src" path="app/client"/>
+	<classpathentry kind="src" path="app/main"/>
+	<classpathentry kind="src" path="bower_components/angular"/>
+	<classpathentry kind="src" path="bower_components/angular-bootstrap"/>
+	<classpathentry kind="src" path="bower_components/angular-cookies"/>
+	<classpathentry kind="src" path="bower_components/angular-mocks"/>
+	<classpathentry kind="src" path="bower_components/angular-resource"/>
+	<classpathentry kind="src" path="bower_components/angular-route"/>
+	<classpathentry kind="src" path="bower_components/angular-sanitize"/>
+	<classpathentry kind="src" path="bower_components/angular-scenario"/>
+	<classpathentry excluding="dist/js/|grunt/|js/" kind="src" path="bower_components/bootstrap"/>
+	<classpathentry kind="src" path="bower_components/bootstrap/dist/js"/>
+	<classpathentry kind="src" path="bower_components/bootstrap/grunt"/>
+	<classpathentry kind="src" path="bower_components/bootstrap/js"/>
+	<classpathentry kind="src" path="bower_components/es5-shim"/>
+	<classpathentry kind="src" path="bower_components/jquery/dist"/>
+	<classpathentry excluding="queue/|manipulation/|traversing/var/|exports/|event/|ajax/|effects/|css/var/|sizzle/dist/|var/|data/|attributes/|manipulation/var/|traversing/|ajax/var/|core/|css/|core/var/" kind="src" path="bower_components/jquery/src"/>
+	<classpathentry excluding="var/" kind="src" path="bower_components/jquery/src/ajax"/>
+	<classpathentry kind="src" path="bower_components/jquery/src/ajax/var"/>
+	<classpathentry kind="src" path="bower_components/jquery/src/attributes"/>
+	<classpathentry excluding="var/" kind="src" path="bower_components/jquery/src/core"/>
+	<classpathentry kind="src" path="bower_components/jquery/src/core/var"/>
+	<classpathentry excluding="var/" kind="src" path="bower_components/jquery/src/css"/>
+	<classpathentry kind="src" path="bower_components/jquery/src/css/var"/>
+	<classpathentry kind="src" path="bower_components/jquery/src/data"/>
+	<classpathentry kind="src" path="bower_components/jquery/src/effects"/>
+	<classpathentry kind="src" path="bower_components/jquery/src/event"/>
+	<classpathentry kind="src" path="bower_components/jquery/src/exports"/>
+	<classpathentry excluding="var/" kind="src" path="bower_components/jquery/src/manipulation"/>
+	<classpathentry kind="src" path="bower_components/jquery/src/manipulation/var"/>
+	<classpathentry kind="src" path="bower_components/jquery/src/queue"/>
+	<classpathentry kind="src" path="bower_components/jquery/src/sizzle/dist"/>
+	<classpathentry excluding="var/" kind="src" path="bower_components/jquery/src/traversing"/>
+	<classpathentry kind="src" path="bower_components/jquery/src/traversing/var"/>
+	<classpathentry kind="src" path="bower_components/jquery/src/var"/>
+	<classpathentry kind="src" path="bower_components/json3/lib"/>
+	<classpathentry kind="src" path="bower_components/lodash/dist"/>
+	<classpathentry kind="src" path="components/auth"/>
+	<classpathentry kind="src" path="components/modal"/>
+	<classpathentry kind="src" path="components/mongoose-error"/>
+	<classpathentry kind="src" path="components/navbar"/>
+	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

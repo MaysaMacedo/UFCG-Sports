@@ -1,0 +1,76 @@
+<div class="form-group"
+	ng-class="{ 'has-success': form.property.$valid && submitted,
+                                            'has-error': form.property.$invalid && submitted }">
+	<label>Property</label> <select class="form-control" name="property" ng-hide="readOnly"
+		class="form-control" ng-model="sale.realty" required>
+		<option value=''>Select Property</option>
+		<option ng-repeat="property in properties" value="{{property._id}}">{{property.type}}
+			{{property.city}} {{property.holder}}</option>
+	</select>
+	
+	<span ng-show="readOnly" class="form-control">
+		<a href="/property/{{sale.realty._id}}">{{sale.realty.type}} in {{sale.realty.city}} - {{sale.realty.holder}}</a>
+	</span>
+
+	<p class="help-block" ng-show="form.property.$error.required && submitted">A
+		property is required</p>
+</div>
+
+<div class="form-group"
+	ng-class="{ 'has-success': form.client.$valid && submitted,
+                                            'has-error': form.client.$invalid && submitted }">
+	<label>Clients</label> <select class="form-control" name="client" ng-hide="readOnly"
+		class="form-control" ng-model="sale.client" required>
+		<option value=''>Select Client</option>
+		<option ng-repeat="client in clients" value="{{client._id}}">{{client.name}}</option>
+	</select>
+	
+	<span ng-show="readOnly" class="form-control">
+		<a href="/client/{{sale.client._id}}">{{sale.client.name}}</a>
+	</span>
+
+	<p class="help-block"
+		ng-show="form.client.$error.required && submitted">A client is
+		required</p>
+</div>
+
+<div class="form-group"
+	ng-class="{ 'has-success': form.price.$valid && submitted,
+                                            'has-error': form.price.$invalid && submitted }">
+	<label>Price</label>
+
+	<div class="input-group"  ng-hide="readOnly">
+		<div class="input-group-addon">$</div>
+		<input type="text" class="form-control" id="exampleInputAmount" required
+			placeholder="Amount" ng-model="sale.price">
+		<div class="input-group-addon">.00</div>
+	</div>
+	
+	<span ng-show="readOnly" class="form-control">
+		{{sale.price | currency:$}}
+	</span>
+
+	<p class="help-block"
+		ng-show="form.price.$error.required && submitted">A price is
+		required</p>
+</div>
+
+<div class="form-group"
+	ng-class="{ 'has-success': form.commission.$valid && submitted,
+                                            'has-error': form.commission.$invalid && submitted }">
+	<label>Agent commission %</label> <input ng-readonly="readOnly" type="text"
+		name="commission" class="form-control" ng-model="sale.commission" required />
+	<p class="help-block" ng-show="form.commission.$error.required && submitted">A
+		commission is required</p>
+</div>
+
+<div class="form-group"
+	ng-class="{ 'has-success': form.state.$valid && submitted,
+                                            'has-error': form.state.$invalid && submitted }">
+	<label>State</label> <input ng-readonly="readOnly" type="text"
+		name="state" class="form-control" ng-model="sale.state" required />
+	<p class="help-block" ng-show="form.state.$error.required && submitted">A
+		state is required</p>
+</div>
+
+

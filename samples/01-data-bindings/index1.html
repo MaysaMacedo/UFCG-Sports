@@ -1,0 +1,18 @@
+<!doctype html>
+<html ng-app>
+  <head>
+     <script src="../support/angular.js"></script>
+  </head>
+  <body>
+    <h3>2-way data binding</h3>
+    <div>
+      <div ng-show="yourName.length > 3">
+          <span>I show up when the entered name is longer than 3 characters.</span> 
+      </div>
+      <p> {{22/7 | number:3}}</p>
+      <p><input type="text" ng-model="yourName" placeholder="Enter a name here"></p>
+      <h1>Hello, {{ yourName }} !</h1>
+       <!-- s = angular.element(document.body).scope() -->
+    </div>
+  </body>
+</html>
