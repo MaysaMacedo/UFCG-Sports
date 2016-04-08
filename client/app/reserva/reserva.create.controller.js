@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('finalnodeApp')
-  .controller('ClientCreateCtrl', function ($scope, $http, $location, Auth) {
+  .controller('ReservaCreateCtrl', function ($scope, $http, $location, Auth) {
     $scope.client = {}
     $scope.errors = {};
     $scope.add = function(form) {

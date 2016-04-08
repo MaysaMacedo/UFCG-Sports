@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('finalnodeApp')
-  .controller('ClientIndexCtrl', function ($scope, $http, $location, Auth) {
+  .controller('ReservaIndexCtrl', function ($scope, $http, $location, Auth) {
     $scope.clients = [];
     $http.get('/api/clients').success(function(clients) {
       $scope.clients = clients;

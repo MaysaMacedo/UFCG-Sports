@@ -1,8 +1,7 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 <div class="container">
 	<ul class="list-group">
-		<li class="list-group-item" ng-show="noClients()"><strong>No
-				clients yet</strong><br></li>
+		<li class="list-group-item" ng-show="noClients()"><strong>Nenhuma reserva cadastrada</strong><br></li>
 		<li class="list-group-item" ng-repeat="client in clients"><strong>{{client.name}}</strong><br>
 			<span class="text-muted">{{client.email}}</span> <a
 			ng-click="delete(client)" class="trash"><span
@@ -13,5 +12,5 @@
 				class="glyphicon glyphicon glyphicon-pencil pull-right"></span></a></li>
 	</ul>
 	<a class="btn btn-default btn-lg btn-register" href="/client/new">
-		New Client </a>
+		Criar reserva </a>
 </div>

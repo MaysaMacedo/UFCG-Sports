@@ -1,0 +1,47 @@
+<div class="form-group"
+	ng-class="{ 'has-success': form.name.$valid && submitted,
+                                            'has-error': form.name.$invalid && submitted }">
+	<label>Nome</label> <input ng-readonly="readOnly" type="text" name="name" class="form-control"
+		ng-model="client.nome" required />
+	<p class="help-block" ng-show="form.name.$error.required && submitted">A
+		Nome é obrigatório</p>
+</div>
+
+<div class="form-group"
+	ng-class="{ 'has-success': form.email.$valid && submitted,
+                                            'has-error': form.email.$invalid && submitted }">
+	<label>Email</label> <input ng-readonly="readOnly" type="email" name="email"
+		class="form-control" ng-model="client.email" required
+		mongoose-error />
+	<p class="help-block" ng-show="form.email.$error.email && submitted">
+		Não parece com um email válido.</p>
+	<p class="help-block" ng-show="form.email.$error.required && submitted">Qual é o seu endereço de email?</p>
+	<p class="help-block" ng-show="form.email.$error.mongoose">{{errors.email }}</p>
+</div>
+
+<div class="form-group"
+	ng-class="{ 'has-success': form.name.$valid && submitted,
+                                            'has-error': form.name.$invalid && submitted }">
+	<label>Instalação esportiva</label> <input ng-readonly="readOnly" type="text" name="name" class="form-control" />
+	<p class="help-block" ng-show="form.name.$error.required && submitted">A
+		Instalação esportiva é obrigatório</p>
+</div>
+
+<div > 
+	<div style="float: left;">
+		<label>Data</label> 
+		<input type = "date" name = "data" id ="data" /> <br/> 
+	</div>
+
+	<div style="float: right, position: relative;">
+		<label>Horário</label> 
+		<input type=time min=6:00 max=20:00 step=900 style="height: 40px;"> 
+	</div>
+	
+</div>
+
+<br></br>
+
+
+
+

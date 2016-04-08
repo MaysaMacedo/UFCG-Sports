@@ -6,23 +6,25 @@ var mongoose = require('mongoose'),
 var validate = require('mongoose-validate')
 
 var ClientSchema = new Schema({
-  name: String,
-  phone: { type: String, required: true},
-  address: { type: String, required: true},
-  city: { type: String, required: true},
-  info: String,
+  nome: String,
+ // phone: { type: String, required: true},
+ // address: { type: String, required: true},
+ // city: { type: String, required: true},
+ // info: String,
   email: { type: String, lowercase: true, required: true, validate: [validate.email, 'Invalid email address'] },
-  owner: [{ type: Schema.Types.ObjectId, ref: 'User'}],
+  data: Date,
+//owner: [{ type: Schema.Types.ObjectId, ref: 'User'}],
   active: Boolean
 });
 
 ClientSchema.statics.filters = function(){
 	return {
-		name: 'contains',
-		address: 'contains',
-		city: 'contains',
-		info: 'contains',
-		email: 'contains'
+		nome: 'contains',
+		//address: 'contains',
+		//city: 'contains',
+		//info: 'contains',
+		email: 'contains',
+		data: 'contains'
 	}
 }
 

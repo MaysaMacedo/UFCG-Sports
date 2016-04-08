@@ -13,8 +13,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
-      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-      <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+      <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -23,11 +22,11 @@
       <link rel="stylesheet" href="app/account/login/login.css">
       <link rel="stylesheet" href="app/admin/admin.css">
       <link rel="stylesheet" href="app/app.css">
-      <link rel="stylesheet" href="app/client/client.css">
       <link rel="stylesheet" href="app/externalapp/externalapp.css">
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="app/post/post.css">
       <link rel="stylesheet" href="app/property/property.css">
+      <link rel="stylesheet" href="app/reserva/client.css">
       <link rel="stylesheet" href="app/sale/sale.css">
       <link rel="stylesheet" href="app/user/user.css">
       <link rel="stylesheet" href="components/modal/modal.css">
@@ -59,16 +58,16 @@
     <![endif]-->
     <!-- build:js({client,node_modules}) app/vendor.js -->
       <!-- bower:js -->
-      <script src="bower_components/jquery/dist/jquery.js"></script>
-      <script src="bower_components/angular/angular.js"></script>
-      <script src="bower_components/angular-resource/angular-resource.js"></script>
-      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-      <script src="bower_components/angular-route/angular-route.js"></script>
-      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
-      <script src="bower_components/flow.js/dist/flow.js"></script>
-      <script src="bower_components/ng-flow/dist/ng-flow.js"></script>
+      <script src="../bower_components/jquery/dist/jquery.js"></script>
+      <script src="../bower_components/angular/angular.js"></script>
+      <script src="../bower_components/angular-resource/angular-resource.js"></script>
+      <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+      <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="../bower_components/angular-route/angular-route.js"></script>
+      <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+      <script src="../bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="../bower_components/flow.js/dist/flow.js"></script>
+      <script src="../bower_components/ng-flow/dist/ng-flow.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
 
@@ -81,11 +80,6 @@
           <script src="app/account/signup/signup.controller.js"></script>
           <script src="app/admin/admin.controller.js"></script>
           <script src="app/admin/admin.js"></script>
-          <script src="app/client/client.controller.js"></script>
-          <script src="app/client/client.create.controller.js"></script>
-          <script src="app/client/client.js"></script>
-          <script src="app/client/client.show.controller.js"></script>
-          <script src="app/client/client.update.controller.js"></script>
           <script src="app/externalapp/externalapp.controller.js"></script>
           <script src="app/externalapp/externalapp.create.controller.js"></script>
           <script src="app/externalapp/externalapp.js"></script>
@@ -101,6 +95,11 @@
           <script src="app/property/property.js"></script>
           <script src="app/property/property.show.controller.js"></script>
           <script src="app/property/property.update.controller.js"></script>
+          <script src="app/reserva/reserva.controller.js"></script>
+          <script src="app/reserva/reserva.create.controller.js"></script>
+          <script src="app/reserva/reserva.js"></script>
+          <script src="app/reserva/reserva.show.controller.js"></script>
+          <script src="app/reserva/reserva.update.controller.js"></script>
           <script src="app/sale/sale.controller.js"></script>
           <script src="app/sale/sale.create.controller.js"></script>
           <script src="app/sale/sale.js"></script>

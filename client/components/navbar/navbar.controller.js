@@ -8,7 +8,7 @@ angular.module('finalnodeApp')
 				'link' : '/',
 				'auth' : false
 			}, {
-				'title' : 'Clients',
+				'title' : 'Reservas',
 				'link' : '/client',
 				'auth' : true
 			}, {

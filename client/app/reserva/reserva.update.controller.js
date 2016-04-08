@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('finalnodeApp')
-  .controller('ClientUpdateCtrl', function ($scope, $http, $routeParams, $location, Auth) {
+  .controller('ReservaUpdateCtrl', function ($scope, $http, $routeParams, $location, Auth) {
 	$scope.client = {};
 	$scope.errors = {};
 	
