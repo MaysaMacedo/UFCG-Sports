@@ -1,32 +1,30 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
-<div class="container">
-	<div class="row">
-		<div class="update col-sm-12">
-			<a ng-click="reload()" class="trash"><span
+<div class="row">
+    <div class="update col-sm-12">
+        <a ng-click="reload()" class="trash"><span
 				class="glyphicon glyphicon-refresh btn btn-primary btn-lg pull-right"></span></a>
-			<fieldset ng-init="readOnly = true">
-				<div ng-include src="'app/post/post.form.html'"></div>
-				<div class="form-group" ng-show="isAdmin()">
-					<label>Owner</label> <input ng-readonly="readOnly"
-						class="form-control" ng-model="post.owner" />
-				</div>
-			</fieldset>
-			<div ng-show="post.comments.length > 0">
-				<strong>Comments</strong><br>
-				<ul class="list-group">
-					<li class="list-group-item" ng-repeat="comment in post.comments">
-						<strong>{{comment.name}}</strong><br> <strong>e-mail:
-					</strong><span class="text-muted">{{comment.email}}</span><br> <strong>Comment:
-					</strong><span class="text-muted">{{comment.comment}}</span> <a
-						ng-click="deleteComment(comment)" class="trash"><span
+        <fieldset ng-init="readOnly = true">
+            <div ng-include src="'app/post/post.form.html'"></div>
+            <div class="form-group" ng-show="isAdmin()">
+                <label>Owner</label>
+                <input ng-readonly="readOnly" class="form-control" ng-model="post.owner" />
+            </div>
+        </fieldset>
+        <div ng-show="post.comments.length > 0">
+            <strong>Comments</strong>
+            <br>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="comment in post.comments">
+                    <strong>{{comment.name}}</strong>
+                    <br> <strong>e-mail:
+					</strong><span class="text-muted">{{comment.email}}</span>
+                    <br> <strong>Comment:
+					</strong><span class="text-muted">{{comment.comment}}</span> <a ng-click="deleteComment(comment)" class="trash"><span
 							class="glyphicon glyphicon-trash pull-right"></span></a>
-				</ul>
-			</div>
-		</div>
-		<a class="btn btn-success btn-lg" href="/post"> Back</a> <a
-			class="btn btn-warning btn-lg" href="/post/edit/{{post._id}}">
+            </ul>
+        </div>
+    </div>
+    <a class="btn btn-success btn-lg" href="/post"> Back</a> <a class="btn btn-warning btn-lg" href="/post/edit/{{post._id}}">
 			Edit</a>
-		<button class="btn btn-danger btn-lg" ng-click="delete(post)">
-			Delete</button>
-	</div>
+    <button class="btn btn-danger btn-lg" ng-click="delete(post)">
+        Delete</button>
 </div>
