@@ -1,29 +1,131 @@
-<div class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl">
-  <div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="NavbarCtrl"  ng-show="isLoggedIn()">
+    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="/" class="navbar-brand">Dashboard</a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">UFCG Sports</a>
     </div>
-    <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
-            <a ng-hide="item.auth && !isLoggedIn()" ng-href="{{item.link}}">{{item.title}}</a>
+    <!-- Top Menu Items -->
+    <ul class="nav navbar-right top-nav">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+            <ul class="dropdown-menu message-dropdown">
+                <li class="message-preview">
+                    <a href="#">
+                        <div class="media">
+                            <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                            <div class="media-body">
+                                <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="message-preview">
+                    <a href="#">
+                        <div class="media">
+                            <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                            <div class="media-body">
+                                <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="message-preview">
+                    <a href="#">
+                        <div class="media">
+                            <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                            <div class="media-body">
+                                <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="message-footer">
+                    <a href="#">Read All New Messages</a>
+                </li>
+            </ul>
         </li>
-        <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/signup">Sign up</a></li>
-        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login">Login</a></li>
-        <li ng-show="isLoggedIn()" ><p class="navbar-text">Hello {{ getCurrentUser().name }}</p> </li>
-        <li ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></li>
-        <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
-      </ul>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+            <ul class="dropdown-menu alert-dropdown">
+                <li>
+                    <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                </li>
+                <li>
+                    <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
+                </li>
+                <li>
+                    <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
+                </li>
+                <li>
+                    <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
+                </li>
+                <li>
+                    <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
+                </li>
+                <li>
+                    <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="#">View All</a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown" ng-show="isLoggedIn()">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ getCurrentUser().name }} <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                </li>
+                <li>
+                    <a href="/settings"><i class="fa fa-fw fa-gear"></i> Configurações</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="" ng-click="logout()"><i class="fa fa-fw fa-power-off"></i> Sair</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav side-nav">
+            <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+                <a ng-hide="item.auth && !isLoggedIn()" ng-href="{{item.link}}"><i class="fa fa-fw fa-{{item.icon}}"></i> {{item.title}}</a>
+            </li>
+            <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin"><i class="fa fa-fw fa-dashboard"></i> Admin</a></li>
+            <li>
+                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                <ul id="demo" class="collapse">
+                    <li>
+                        <a href="#">Dropdown Item</a>
+                    </li>
+                    <li>
+                        <a href="#">Dropdown Item</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
-  </div>
-</div>
+    <!-- /.navbar-collapse -->
+</nav>

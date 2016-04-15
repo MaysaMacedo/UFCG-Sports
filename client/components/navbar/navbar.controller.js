@@ -4,29 +4,35 @@ angular.module('finalnodeApp')
   .controller('NavbarCtrl',
 		function($scope, $location, Auth) {
 			$scope.menu = [ {
-				'title' : 'Home',
+				'title' : 'Início',
 				'link' : '/',
-				'auth' : false
+				'auth' : false,
+				'icon' : 'home'
 			}, {
-				'title' : 'Clients',
+				'title' : 'Reservas',
 				'link' : '/client',
-				'auth' : true
+				'auth' : true,
+				'icon' : 'plus'
 			}, {
-				'title' : 'Properties',
+				'title' : 'Calendário',
 				'link' : '/property',
-				'auth' : true
+				'auth' : true,
+				'icon' : 'calendar'
 			}, {
-				'title' : 'Sales',
+				'title' : 'Relatórios',
 				'link' : '/sale',
-				'auth' : true
+				'auth' : true,
+				'icon' : 'area-chart'
 			}, {
-				'title' : 'Posts',
-				'link' : '/post',
-				'auth' : true
+				'title' : 'Sobre',
+				'link' : '/sobre',
+				'auth' : true,
+				'icon' : 'group'
 			}, {
 				'title' : 'API Keys',
 				'link' : '/externalapp',
-				'auth' : true
+				'auth' : true,
+				'icon' : 'tty'
 			} ];
 
     $scope.isCollapsed = true;
