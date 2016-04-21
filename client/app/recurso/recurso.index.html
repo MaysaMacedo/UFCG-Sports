@@ -1,0 +1,20 @@
+<div class="row">
+    <ul class="list-group">
+        <li class="list-group-item" ng-show="recursosVazio()"><strong>Nenhuma recurso esportivo cadastrado</strong>
+            <br>
+        </li>
+        <li class="list-group-item col-md-12" ng-repeat="recurso in recursos">
+            <span data-ng-hide="novoRecurso" class="text-muted">{{recurso.nome}}</span>
+            <span data-ng-show="novoRecurso" class="col-md-5">
+            	<input type="text" name="nome" class="form-control" data-ng-model="novoRecurso.nome" required />
+            </span>
+            <a ng-click="add(novoRecurso)" class="show">
+                <span class="fa fa-floppy-o pull-right"></span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="row">
+    <a class="btn btn-default btn-lg btn-register" data-ng-click="addRecurso()">
+		Criar </a>
+</div>
