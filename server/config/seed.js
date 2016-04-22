@@ -5,33 +5,9 @@
 
 'use strict';
 
-var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
-var Client = require('../api/client/client.model');
-var Realty = require('../api/realty/realty.model');
-var Post = require('../api/post/post.model');
-var Sale = require('../api/sale/sale.model');
 var App = require('../api/app/app.model');
-
-Thing.find({}).remove(function() {
-  Thing.create({
-    name : 'CRUD Clients'
-  }, {
-    name : 'CRUD Real Estate'
-  }, {
-    name : 'CRUD Sales'
-  },  {
-    name : 'CRUD Posts'
-  },  {
-    name : 'CRUD External Aplications'
-  },  {
-    name : 'Authentication Local and Google'
-  },{
-    name : 'Resquest Authorization provider'
-  },{
-    name : 'Scopping information Support'
-  });
-});
+var Recurso = require('../api/recurso/recurso.model');
 
 App.find({}).remove(function() {})
 
@@ -70,43 +46,17 @@ User.create({
 
 })
 
-
-Client.find({}).remove(function() {})
-
-Realty.find({}).remove(function() {
-	Realty.create(  {
-		    type : 'Houser',
-		    region: 'East',
-		    city: 'Dublin',
-		    address: 'Oconnor Street',
-		    holder: 'OBrian',
-		    owner: '55389e8dc4eb7fc02b2e3f11'
-		    
-		  });
-})
-
-var Post = require('../api/post/post.model');
-
-Post.find({}).remove(function() {
-  Post.create(  {
-    title : 'Houser in Dublin',
-    description:  'It was popularised in the 1960sith desktop publis f Lorem Ipsum'
-  },  {
-    title : 'House in East Waterford',
-    description:  'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s'
-  },  {
-    title : 'Apartment in West Cork',
-    description:   null
-  },  {
-    title : 'Land in county Cork',
-    description:   null
-  },  {
-    title : 'Office in Galway',
-    description:   'There are many variations of passages of Lorem Ipsum available'
-  }, function() {
-      console.log('finished populating posts');
-  	}
-  )
+Recurso.find({}).remove(function() {
+  Recurso.create([
+    {nome: 'Ginásio'},
+    {nome: 'Quadra de Tennis'},
+    {nome: 'Quadra de Vôlei de Praia 1'},
+    {nome: 'Quadra de Vôlei de Praia 2'},
+    {nome: 'Quadra de Futebol de Areia'},
+    {nome: 'Mini-campo'},
+    {nome: 'Campo'}
+    ], function() {
+      console.log('Recursos esportivos populados com sucesso!');
+    }
+  );
 });
-
-Sale.find({}).remove(function() {})

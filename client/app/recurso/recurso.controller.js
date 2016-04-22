@@ -1,15 +1,13 @@
 'use strict';
 
-angular.module('finalnodeApp').controller('RecursoCtrl', function($scope, $http, $location, Auth) {
+angular.module('finalnodeApp').controller('RecursoCtrl', function($scope, $http, $location, $routeParams, Auth) {
     var URI_RECURSO = '/api/recursos/';
+
+    var self = this;
 
     $scope.recursos = [];
 
-    $scope.novoRecurso = undefined;
-
-    $scope.errors = {};
-
-    $http.get('/api/recursos').success(function(recursos) {
+    $http.get(URI_RECURSO).success(function(recursos) {
         $scope.recursos = recursos;
     });
 
@@ -18,37 +16,68 @@ angular.module('finalnodeApp').controller('RecursoCtrl', function($scope, $http,
     };
 
     $scope.delete = function(recurso) {
-        $http.delete(URI_RECURSO + recurso._id);
-        $scope.recursos = []
-        $http.get(URI_RECURSO).success(function(recursos) {
-            $scope.recursos = recursos;
-        });
+        if (confirm("Tem certeza que deseja deletar?")) {
+            $http.delete(URI_RECURSO + recurso._id);
+            $scope.recursos = []
+            $http.get(URI_RECURSO).success(function(recursos) {
+                $scope.recursos = recursos;
+            });
+        } 
     };
 
-    $scope.salvar = function(recurso) {
-        $http.put(URI_RECURSO + $scope.recurso._id, $scope.recurso).then(function() {
-            console.log(">>>>>>>>>>>>> ok salvou")
-        }).catch(function(err) {
+    // Criar e editar recurso
 
+    $scope.recurso = {};
+
+    if ($routeParams.id) {
+        $http.get(URI_RECURSO + $routeParams.id).success(function(recurso) {
+            $scope.recurso = recurso;
         });
-    };
+    }
 
-    $scope.add = function(recurso) {
-        if (recurso.nome === '') {
-            return;
-        }
-        $http.post(URI_RECURSO, recurso).then(function() {
-            console.log(">>>>>>>>>>>>> ok cadastrou")
-            $scope.novoRecurso = undefined;
-        });
-    };
+    $scope.errors = {};
 
-    $scope.addRecurso = function() {
-        if ($scope.novoRecurso === undefined) {
-            $scope.novoRecurso = { nome: "Nome para o recurso." };
-            $scope.recursos.push($scope.novoRecurso);
+    $scope.submiterForm = function(form) {
+        if ($routeParams.id) {
+            self.salvarRecurso(form);
         } else {
-            console.log("Não pode adicionar antes de salvar.")
+            self.criarRecurso(form);
         }
     }
+
+    this.salvarRecurso = function(form) {
+        if ($scope.recurso.nome === '') {
+            return;
+        }
+        $http.put(URI_RECURSO + $scope.recurso._id, $scope.recurso).then(function() {
+            $location.path('/recurso')
+        }).catch(function(err) {
+            err = err.data;
+            $scope.errors = {};
+
+            // Update validity of form fields that match the mongoose errors
+            angular.forEach(err.errors, function(error, field) {
+                form[field].$setValidity('mongoose', false);
+                $scope.errors[field] = error.message;
+            });
+        });
+    };
+
+    this.criarRecurso = function(form) {
+        if ($scope.recurso.nome === '') {
+            return;
+        }
+        $http.post(URI_RECURSO, $scope.recurso).then(function() {
+            $location.path('/recurso')
+        }).catch(function(err) {
+            err = err.data;
+            $scope.errors = {};
+
+            // Update validity of form fields that match the mongoose errors
+            angular.forEach(err.errors, function(error, field) {
+                form[field].$setValidity('mongoose', false);
+                $scope.errors[field] = error.message;
+            });
+        });
+    };
 });
