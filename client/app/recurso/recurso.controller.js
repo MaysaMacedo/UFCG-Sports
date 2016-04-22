@@ -7,10 +7,6 @@ angular.module('finalnodeApp').controller('RecursoCtrl', function($scope, $http,
 
     $scope.recursos = [];
 
-    $http.get(URI_RECURSO).success(function(recursos) {
-        $scope.recursos = recursos;
-    });
-
     $scope.recursosVazio = function() {
         return $scope.recursos.length === 0;
     };
@@ -22,18 +18,12 @@ angular.module('finalnodeApp').controller('RecursoCtrl', function($scope, $http,
             $http.get(URI_RECURSO).success(function(recursos) {
                 $scope.recursos = recursos;
             });
-        } 
+        }
     };
 
     // Criar e editar recurso
 
     $scope.recurso = {};
-
-    if ($routeParams.id) {
-        $http.get(URI_RECURSO + $routeParams.id).success(function(recurso) {
-            $scope.recurso = recurso;
-        });
-    }
 
     $scope.errors = {};
 
@@ -67,6 +57,7 @@ angular.module('finalnodeApp').controller('RecursoCtrl', function($scope, $http,
         if ($scope.recurso.nome === '') {
             return;
         }
+
         $http.post(URI_RECURSO, $scope.recurso).then(function() {
             $location.path('/recurso')
         }).catch(function(err) {
@@ -80,4 +71,16 @@ angular.module('finalnodeApp').controller('RecursoCtrl', function($scope, $http,
             });
         });
     };
+
+    (function main() {
+        $http.get(URI_RECURSO).success(function(recursos) {
+            $scope.recursos = recursos;
+        });
+
+        if ($routeParams.id) {
+            $http.get(URI_RECURSO + $routeParams.id).success(function(recurso) {
+                $scope.recurso = recurso;
+            });
+        }
+    })();
 });
