@@ -2,28 +2,28 @@
 
 angular.module('finalnodeApp')
   .controller('ReservaIndexCtrl', function ($scope, $http, $location, Auth) {
-    $scope.clients = [];
-    $http.get('/api/clients').success(function(clients) {
-      $scope.clients = clients;
+    $scope.reservas = [];
+    $http.get('/api/reservas').success(function(reservas) {
+      $scope.reservas = reservas;
     });
     
     $scope.noClients = function() {
-    	return $scope.clients.length === 0
+      return $scope.reservas.length === 0
     }
     
-    $scope.delete = function(client) {
-      $http.delete('/api/clients/' + client._id);
-      $scope.clients = []
-      $http.get('/api/clients').success(function(clients) {
-          $scope.clients = clients;
+    $scope.delete = function(reserva) {
+      $http.delete('/api/reservas/' + reserva._id);
+      $scope.reservas = []
+      $http.get('/api/reservas').success(function(reservas) {
+          $scope.reservas = reservas;
         });
     };
     
-    $scope.show = function(client) {
-           $location.path('/client/'+client._id)
+    $scope.show = function(reserva) {
+           $location.path('/reserva/'+reserva._id)
       };
      
-    $scope.edit = function(client) {
-          $location.path('/client/edit/'+client._id)
+    $scope.edit = function(reserva) {
+          $location.path('/reserva/edit/'+reserva._id)
      };
   });

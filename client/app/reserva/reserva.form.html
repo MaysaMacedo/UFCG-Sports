@@ -2,7 +2,7 @@
 	ng-class="{ 'has-success': form.name.$valid && submitted,
                                             'has-error': form.name.$invalid && submitted }">
 	<label>Nome</label> <input ng-readonly="readOnly" type="text" name="name" class="form-control"
-		ng-model="client.nome" required />
+		ng-model="reserva.nome" required />
 	<p class="help-block" ng-show="form.name.$error.required && submitted">A
 		Nome é obrigatório</p>
 </div>
@@ -11,7 +11,7 @@
 	ng-class="{ 'has-success': form.email.$valid && submitted,
                                             'has-error': form.email.$invalid && submitted }">
 	<label>Email</label> <input ng-readonly="readOnly" type="email" name="email"
-		class="form-control" ng-model="client.email" required
+		class="form-control" ng-model="reserva.email" required
 		mongoose-error />
 	<p class="help-block" ng-show="form.email.$error.email && submitted">
 		Não parece com um email válido.</p>
@@ -22,7 +22,7 @@
 <div class="form-group"
 	ng-class="{ 'has-success': form.name.$valid && submitted,
                                             'has-error': form.name.$invalid && submitted }">
-	<label>Instalação esportiva</label> <input ng-readonly="readOnly" type="text" name="name" class="form-control" />
+	<label>Instalação esportiva</label> <input type="text" name="name" class="form-control" ng-model="reserva.recurso" required/>
 	<p class="help-block" ng-show="form.name.$error.required && submitted">A
 		Instalação esportiva é obrigatório</p>
 </div>
@@ -30,18 +30,14 @@
 <div > 
 	<div style="float: left;">
 		<label>Data</label> 
-		<input type = "date" name = "data" id ="data" /> <br/> 
+		<input type = "date" name = "data" id ="data" ng-model="reserva.data" required/> <br/> 
 	</div>
 
 	<div style="float: right, position: relative;">
 		<label>Horário</label> 
-		<input type=time min=6:00 max=20:00 step=900 style="height: 40px;"> 
+		<input type=number min=6 max=20 style="height: 40px;" ng-model="reserva.hora" required> 
 	</div>
 	
 </div>
 
 <br></br>
-
-
-
-

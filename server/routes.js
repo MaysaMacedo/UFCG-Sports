@@ -14,7 +14,7 @@ module.exports = function(app) {
 	app.use('/api/posts', require('./api/post'));
 	app.use('/api/sales', require('./api/sale'));
 	app.use('/api/realtys', require('./api/realty'));
-	app.use('/api/clients', require('./api/client'));
+	app.use('/api/reservas', require('./api/reserva'));
 	app.use('/api/things', require('./api/thing'));
 	app.use('/api/users', require('./api/user'));
 	app.use('/api/recursos', require('./api/recurso'));

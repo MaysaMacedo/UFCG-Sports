@@ -1,15 +1,17 @@
 <div class="row">
 	<ul class="list-group">
 		<li class="list-group-item" ng-show="noClients()"><strong>Nenhuma reserva cadastrada</strong><br></li>
-		<li class="list-group-item" ng-repeat="client in clients"><strong>{{client.name}}</strong><br>
-			<span class="text-muted">{{client.email}}</span> <a
-			ng-click="delete(client)" class="trash"><span
+		<li class="list-group-item" ng-repeat="reserva in reservas"><strong>{{reserva.nome}}</strong><br>
+			<span class="text-muted">{{reserva.email}}</span> <br>
+			<span class="text-muted">Dia {{reserva.data  | date:'dd/MM/yyyy'}}</span>
+			<span class="text-muted"> às {{reserva.hora}}h</span>  <a
+			ng-click="delete(reserva)" class="trash"><span
 				class="glyphicon glyphicon-trash pull-right"></span></a> <a
-			ng-click="show(client)" class="show"><span
+			ng-click="show(reserva)" class="show"><span
 				class="glyphicon glyphicon-th-large pull-right"></span></a> <a
-			ng-click="edit(client)" class="show"><span
+			ng-click="edit(reserva)" class="show"><span
 				class="glyphicon glyphicon glyphicon-pencil pull-right"></span></a></li>
 	</ul>
-	<a class="btn btn-default btn-lg btn-register" href="/client/new">
+	<a class="btn btn-default btn-lg btn-register" href="/reserva/new">
 		Criar reserva </a>
 </div>
