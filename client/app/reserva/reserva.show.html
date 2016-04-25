@@ -4,12 +4,12 @@
             <div ng-include src="'app/reserva/reserva.form.html'"></div>
             <div class="form-group" ng-show="isAdmin()">
                 <label>Owner</label>
-                <input ng-readonly="readOnly" class="form-control" ng-model="client.owner" />
+                <input ng-readonly="readOnly" class="form-control" ng-model="reserva.nome" />
             </div>
         </fieldset>
     </div>
-    <a class="btn btn-success btn-lg" href="/client"> Back</a> <a class="btn btn-warning btn-lg" href="/client/edit/{{client._id}}">
-			Editar</a>
-    <button class="btn btn-danger btn-lg" ng-click="delete(client)">
+    <a class="btn btn-success btn-lg" href="/reserva"> Back</a> <a class="btn btn-warning btn-lg" href="/reserva/edit/{{reserva._id}}">
+            Editar</a>
+    <button class="btn btn-danger btn-lg" ng-click="delete(reserva)">
         Deletar</button>
 </div>

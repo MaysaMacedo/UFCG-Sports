@@ -15,7 +15,7 @@ angular.module('finalnodeApp')
 				'icon' : 'th'
 			}, {
 				'title' : 'Reservas',
-				'link' : '/client',
+				'link' : '/reserva',
 				'auth' : true,
 				'icon' : 'plus'
 			}, {
