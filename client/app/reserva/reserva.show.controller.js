@@ -2,15 +2,16 @@
 
 angular.module('finalnodeApp')
   .controller('ReservaShowCtrl', function ($scope, $http, $routeParams, $location, Auth) {
-    $scope.client = {};
-    $http.get('/api/clients/' + $routeParams.id).success(function(client) {
-        $scope.client = client;
+    $scope.reserva = {};
+    $http.get('/api/reservas/' + $routeParams.id).success(function(reserva) {
+        $scope.reserva = reserva;
+        $scope.reserva.data = new Date($scope.reserva.data);
     });
-    $scope.delete = function(client) {
-      $http.delete('/api/clients/' + client._id);
-      $location.path('/client')
+    $scope.delete = function(reserva) {
+      $http.delete('/api/reservas/' + reserva._id);
+      $location.path('/reserva')
     };
     $scope.isAdmin = function() {
-    	return Auth.isAdmin()
+      return Auth.isAdmin()
     }
   });

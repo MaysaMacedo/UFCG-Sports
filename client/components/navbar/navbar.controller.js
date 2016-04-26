@@ -8,9 +8,14 @@ angular.module('finalnodeApp')
 				'link' : '/',
 				'auth' : false,
 				'icon' : 'home'
-			}, {
+			},{
+				'title' : 'Recursos Esportivos',
+				'link' : '/recurso',
+				'auth' : true,
+				'icon' : 'th'
+			},{
 				'title' : 'Reservas',
-				'link' : '/client',
+				'link' : '/reserva',
 				'auth' : true,
 				'icon' : 'plus'
 			}, {

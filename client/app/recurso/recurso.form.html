@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h1>Recurso Esportivo</h1>
+    </div>
+    <div class="col-sm-12">
+        <form class="form" name="form" ng-submit="submiterForm(form)" novalidate>
+            <div class="form-group" ng-class="{ 'has-success': form.nome.$valid && submitted,
+                                                            'has-error': form.nome.$invalid && submitted }">
+                <label>Nome</label>
+                <input type="text" name="nome" class="form-control" ng-model="recurso.nome" required />
+            </div>
+            <button class="btn btn-success" type="submit">
+                Salvar</button>
+            <a href="/recurso" class="btn btn-danger">
+                Cancelar</a>
+        </form>
+    </div>
+</div>
