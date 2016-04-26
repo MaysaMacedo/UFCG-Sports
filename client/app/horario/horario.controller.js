@@ -6,6 +6,8 @@ angular.module('finalnodeApp').controller('HorarioCtrl', function($scope, $http,
 
     var self = this;
 
+    $scope.isAdmin = Auth.isAdmin;
+
     $scope.horarios = [];
     $scope.recursos = [];
 
@@ -24,6 +26,7 @@ angular.module('finalnodeApp').controller('HorarioCtrl', function($scope, $http,
     };
 
     // Criar e editar recurso
+    
     var amanha = new Date;
     amanha.setDate(amanha.getDate() + 1);
 
@@ -66,7 +69,7 @@ angular.module('finalnodeApp').controller('HorarioCtrl', function($scope, $http,
         if ($scope.horario.nome === '') {
             return;
         }
-
+        $scope.horario.recurso = $routeParams.idRecurso;
         $http.post(URI_HORARIO, $scope.horario).then(function() {
             $location.path('/horario')
         }).catch(function(err) {
@@ -79,6 +82,27 @@ angular.module('finalnodeApp').controller('HorarioCtrl', function($scope, $http,
                 $scope.errors[field] = error.message;
             });
         });
+    };
+
+    $scope.getDiaDaSemana = function(data) {
+        var d = new Date(data);
+        var weekday = new Array(7);
+        weekday[0] = "Domingo";
+        weekday[1] = "Segunda-Feira";
+        weekday[2] = "Terça-Feira";
+        weekday[3] = "Quarta-Feira";
+        weekday[4] = "Quinta-Feira";
+        weekday[5] = "Sexta-Feira";
+        weekday[6] = "Sábado";
+
+        return weekday[d.getDay()];
+    };
+
+    $scope.formatarHora = function(hora) {
+        var data = new Date();
+        var minutos = 60 * (hora % 1);
+        data.setHours(hora, minutos);
+        return data.getHours()+":"+data.getMinutes('mm');
     };
 
     (function main() {

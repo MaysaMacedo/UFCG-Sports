@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: RecursoCtrl', function() {
+describe('Controller: HorarioCtrl', function() {
 
     beforeEach(module('finalnodeApp',
         'ngCookies',
@@ -11,6 +11,7 @@ describe('Controller: RecursoCtrl', function() {
     ));
 
     var URI_RECURSO = '/api/recursos/';
+    var URI_HORARIO = '/api/horarios/';
     var scope;
     var q;
     var getController;
@@ -27,8 +28,9 @@ describe('Controller: RecursoCtrl', function() {
             });
 
             getController = function() {
+                $httpBackend.expectGET(URI_HORARIO).respond([{ descricao: "Prefeitura Universitaria" }]);
                 $httpBackend.expectGET(URI_RECURSO).respond([{ nome: "Quadra de Tennis" }]);
-                return $controller('RecursoCtrl', {
+                return $controller('HorarioCtrl', {
                     $scope: scope
                 });
             }
@@ -40,52 +42,51 @@ describe('Controller: RecursoCtrl', function() {
         $httpBackend.verifyNoOutstandingRequest();
     });
 
-    describe('Testa crud de recursos esportivos', function() {
-        it('Testa criarRecurso', function() {
+    describe('Testa crud de horarios', function() {
+        it('Testa criarHorario', function() {
             var controller = getController();
 
-            scope.recurso = { nome: "Quadra de Tennis" }
+            scope.horario = { descricao: "Prefeitura Universitaria" };
 
-            controller.criarRecurso();
+            controller.criarHorario();
 
-            var recursoEsperado = { nome: "Quadra de Tennis" }
-            $httpBackend.expectPOST(URI_RECURSO, recursoEsperado).respond({});
+            var horarioEsperado = { descricao: "Prefeitura Universitaria"};
+            $httpBackend.expectPOST(URI_HORARIO, horarioEsperado).respond({});
             $httpBackend.expectGET("app/main/main.html").respond({});
-            $httpBackend.expectGET("app/recurso/recurso.index.html").respond({});
+            $httpBackend.expectGET("app/horario/horario.index.html").respond({});
             $httpBackend.flush();
         });
 
-        it('Testa salvarRecurso', function() {
+        it('Testa salvarHorario', function() {
             var controller = getController();
 
-            scope.recurso = { nome: "Quadra de Tennis", _id: 1 }
+            scope.horario = { descricao: "Prefeitura Universitaria", _id: 1 }
 
-            controller.salvarRecurso();
+            controller.salvarHorario();
 
-            var recursoEsperado = { nome: "Quadra de Tennis", _id: 1 }
-            $httpBackend.expectPUT(URI_RECURSO + recursoEsperado._id, recursoEsperado).respond({});
+            var horarioEsperado = { descricao: "Prefeitura Universitaria", _id: 1 }
+            $httpBackend.expectPUT(URI_HORARIO + horarioEsperado._id, horarioEsperado).respond({});
             $httpBackend.expectGET("app/main/main.html").respond({});
-            $httpBackend.expectGET("app/recurso/recurso.index.html").respond({});
+            $httpBackend.expectGET("app/horario/horario.index.html").respond({});
             $httpBackend.flush();
         });
 
         it('Testa $scope.delete', function() {
             var controller = getController();
 
-            scope.recurso = { nome: "Quadra de Tennis", _id: 1 }
+            scope.horario = { descricao: "Prefeitura Universitaria", _id: 1 }
 
-            sinon.stub(window, "confirm", function() {
+            var confirm = sinon.stub(window, "confirm", function() {
                 return true;
             });
 
-            scope.delete(scope.recurso);
+            scope.delete(scope.horario);
 
-            var recursoEsperado = { nome: "Quadra de Tennis", _id: 1 }
-            $httpBackend.expectDELETE(URI_RECURSO + recursoEsperado._id).respond({});
-            $httpBackend.expectGET(URI_RECURSO).respond([{ nome: "Quadra de Tennis" }]);
+            var horarioEsperado = { descricao: "Prefeitura Universitaria", _id: 1 }
+            $httpBackend.expectDELETE(URI_HORARIO + horarioEsperado._id).respond({});
+            $httpBackend.expectGET(URI_HORARIO).respond([{ descricao: "Prefeitura Universitaria" }]);
             $httpBackend.expectGET("app/main/main.html").respond({});
             $httpBackend.flush();
         });
     });
-
 });

@@ -1,11 +1,11 @@
 <div class="row">
-    <h3>Tabela de Horários</h3>
+    <h3>Tabela de Horários Fixos / Reservados</h3>
 </div>
-<div class="row" ng-repeat="recurso in recursos | orderBy: 'nome'">
+<div class="row" ng-repeat="recursoEsportivo in recursos | orderBy: 'nome'">
     <ul class="list-group">
-        <li class="list-group-item" style="background:#004D40;color:white;">
-            <strong>{{recurso.nome}}</strong>
-            <a class="pull-right" style="color:white;" href="/horario/new/{{recurso._id}}"
+        <li class="list-group-item" style="background:#F5F5F5;color:black;">
+            <strong>{{recursoEsportivo.nome}}</strong>
+            <a data-ng-show="isAdmin()" class="pull-right" style="color:#263238;" href="/horario/new/{{recursoEsportivo._id}}"
                 ng-mouseover="mouseOver = ' Adicionar horário'"
                 ng-mouseleave="mouseOver = ''">
                 <span class="fa fa-plus"><strong>{{mouseOver}}</strong></span>
@@ -14,10 +14,10 @@
         <li class="list-group-item" ng-show="horariosVazio()"><strong>Nenhuma horário cadastrado</strong>
             <br>
         </li>
-        <li class="list-group-item" name="list-group-item-horario-{{$index}}" ng-repeat="horario in horarios | orderBy: 'nome'">
-            <span>{{horario.nome}}</span>
-            <a ng-click="delete(horario)" title="Deletar" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
-            <a href="/horario/edit/{{horario._id}}" title="Editar" class="show"><span class="glyphicon glyphicon glyphicon-pencil pull-right"></span></a>
+        <li class="list-group-item" name="list-group-item-horario-{{$index}}" ng-repeat="horario in horarios | orderBy: 'nome' | filter: {recurso: recursoEsportivo._id}">
+            <span>{{horario.descricao}} toda(o) {{getDiaDaSemana(horario.data)}} às {{formatarHora(horario.hora)}} horas</span>
+            <a data-ng-show="isAdmin()" ng-click="delete(horario)" title="Deletar" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+            <a data-ng-show="isAdmin()" href="/horario/edit/{{horario._id}}" title="Editar" class="show"><span class="glyphicon glyphicon glyphicon-pencil pull-right"></span></a>
         </li>
     </ul>
 </div>

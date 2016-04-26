@@ -19,11 +19,8 @@ function findById(req) {
 
 // Get list of Horarios
 exports.index = function(req, res) {
-    var query = Horario.find({ 'usuario': req.user });
+    var query = Horario.find();
     Utils.applyFilters(query, Horario.filters(), req.query);
-    if (auth.isAdmin(req.user)) {
-        query = Horario.find();
-    }
     query.exec(function(err, Horarios) {
         if (err) {
             return handleError(res, err);
@@ -47,18 +44,22 @@ exports.show = function(req, res) {
 
 // Creates a new Horario in the DB.
 exports.create = function(req, res) {
-    Horario.create(req.body, function(err, Horario) {
-        if (err) {
-            return validationError(res, err);
-        }
-        Horario.usuario = req.user;
-        Horario.save(function(err, Horario) {
+    if (auth.isAdmin(req.user)) {
+        Horario.create(req.body, function(err, Horario) {
             if (err) {
-                return validationError(err);
+                return validationError(res, err);
             }
+            Horario.usuario = req.user;
+            Horario.save(function(err, Horario) {
+                if (err) {
+                    return validationError(err);
+                }
+            });
+            return res.json(201, Horario);
         });
-        return res.json(201, Horario);
-    });
+    } else {
+        return res.send(403);
+    }
 };
 
 // Updates an existing Horario in the DB.
