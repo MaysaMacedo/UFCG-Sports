@@ -19,10 +19,10 @@ angular.module('finalnodeApp')
 				'auth' : true,
 				'icon' : 'plus'
 			}, {
-				'title' : 'Calendário',
-				'link' : '/property',
+				'title' : 'Horários',
+				'link' : '/horario',
 				'auth' : true,
-				'icon' : 'calendar'
+				'icon' : 'clock-o'
 			}, {
 				'title' : 'Relatórios',
 				'link' : '/sale',

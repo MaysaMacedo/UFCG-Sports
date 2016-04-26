@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h1>Novo Horário para {{recurso.nome}}</h1>
+    </div>
+    <div class="col-sm-12">
+        <form class="form" name="form" ng-submit="submiterForm(form)" novalidate>
+            <div class="form-group" ng-class="{ 'has-success': form.nome.$valid && submitted,
+                                                            'has-error': form.nome.$invalid && submitted }">
+                <label>Descrição</label>
+                <input type="text" name="nome" class="form-control" ng-model="horario.descricao" />
+            </div>
+            <div class="form-group" ng-class="{ 'has-success': form.date.$valid && submitted,
+                                                            'has-error': form.date.$invalid && submitted }">
+                <label>Data</label>
+                <input type="date" name="data" class="form-control date" id="data" ng-model="horario.data" required/>
+            </div>
+            <div class="dropdown">
+                <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
+                    <div class="input-group">
+                        <input type="text" class="form-control" data-ng-model="data.dateDropDownInput"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    </div>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <datetimepicker data-ng-model="data.dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown2'}"
+                    data-before-render="beforeRender($view, $dates, $leftDate, $upDate, $rightDate)"/>
+                </ul>
+            </div>
+            <div class="form-group" ng-class="{ 'has-success': form.duracao.$valid && submitted,
+                                                            'has-error': form.duracao.$invalid && submitted }">
+                <label>Duração (hrs)</label>
+                <input disabled="true" type="number" name="duracao" class="form-control" ng-model="horario.duracao" />
+            </div>
+            <div class="checkbox" ng-class="{ 'has-success': form.semanal.$valid && submitted,
+                                                            'has-error': form.semanal.$invalid && submitted }">
+                <label>
+                    <input type="checkbox" name="semanal" id="semanal" value="true" checked data-ng-model="horario.semanal"> Repetir Semanalmente
+                </label>
+            </div>
+            <button class="btn btn-success" type="submit">
+                Salvar</button>
+            <a href="/horario" class="btn btn-danger">
+                Cancelar</a>
+        </form>
+    </div>
+</div>

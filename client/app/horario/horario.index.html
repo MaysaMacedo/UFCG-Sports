@@ -1,0 +1,23 @@
+<div class="row">
+    <h3>Tabela de Horários</h3>
+</div>
+<div class="row" ng-repeat="recurso in recursos | orderBy: 'nome'">
+    <ul class="list-group">
+        <li class="list-group-item" style="background:#004D40;color:white;">
+            <strong>{{recurso.nome}}</strong>
+            <a class="pull-right" style="color:white;" href="/horario/new/{{recurso._id}}"
+                ng-mouseover="mouseOver = ' Adicionar horário'"
+                ng-mouseleave="mouseOver = ''">
+                <span class="fa fa-plus"><strong>{{mouseOver}}</strong></span>
+            </a>
+        </li>
+        <li class="list-group-item" ng-show="horariosVazio()"><strong>Nenhuma horário cadastrado</strong>
+            <br>
+        </li>
+        <li class="list-group-item" name="list-group-item-horario-{{$index}}" ng-repeat="horario in horarios | orderBy: 'nome'">
+            <span>{{horario.nome}}</span>
+            <a ng-click="delete(horario)" title="Deletar" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+            <a href="/horario/edit/{{horario._id}}" title="Editar" class="show"><span class="glyphicon glyphicon glyphicon-pencil pull-right"></span></a>
+        </li>
+    </ul>
+</div>
