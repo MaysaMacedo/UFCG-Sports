@@ -1,7 +1,7 @@
 'use strict';
 
 var _ = require('lodash');
-var Sale = require('./sale.model');
+var ReservaPendente = require('./reservaPendente.model');
 var auth = require('../../auth/auth.service');
 var Utils = require('../../components/utils');
 
@@ -10,32 +10,24 @@ var validationError = function(res, err) {
 };
 
 function findById(req) {
-	var query =  Sale.findById(req.params.id).where('owner').equals(req.user)
-	  if(auth.isAdmin(req.user)) {
-		  query = Sale.findById(req.params.id)
-	  }
-	return query
+  return ReservaPendente.findById(req.params.id)
 }
 
-// Get list of sales
 exports.index = function(req, res) {
-	var query =  Sale.find({'owner': req.user})
-    Utils.applyFilters(query, Sale.filters(), req.query)
-    if(auth.isAdmin(req.user)) {
-	  query = Sale.find()
+  var query =  ReservaPendente.find()
+  query.exec(function(err, reservas) {
+    if (err) {
+      return handleError(res, err);
     }
-	query.exec(function (err, sales) {
-    if(err) { return handleError(res, err); }
-    return res.json(200, sales);
+    return res.json(200, reservas);
   });
 };
 
-// Get a single sale
 exports.show = function(req, res) {
-  findById(req).exec(function (err, sale) {
+  findById(req).exec(function (err, reserva) {
     if(err) { return handleError(res, err); }
-    if(!sale) { return res.send(404); }
-    return res.json(sale);
+    if(!reserva) { return res.send(404); }
+    return res.json(reserva);
   });
 };
 
@@ -51,29 +43,39 @@ exports.create = function(req, res) {
   });
 };
 
-// Updates an existing sale in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
-  findById(req).exec(function (err, sale) {
+  findById(req).exec(function (err, reserva) {
     if (err) { return handleError(res, err); }
-    if(!sale) { return res.send(404); }
-    var updated = _.merge(sale, req.body);
+    if(!reserva) { return res.send(404); }
+    var updated = _.merge(reserva, req.body);
     updated.save(function (err) {
       if (err) { return validationError(res, err); }
-      return res.json(200, sale);
+      return res.json(200, reserva);
     });
   });
 };
 
-// Deletes a sale from the DB.
 exports.destroy = function(req, res) {
-  findById(req).exec(function (err, sale) {
+  findById(req).exec(function (err, reserva) {
     if(err) { return handleError(res, err); }
-    if(!sale) { return res.send(404); }
-    sale.remove(function(err) {
+    if(!reserva) { return res.send(404); }
+    reserva.remove(function(err) {
       if(err) { return handleError(res, err); }
       return res.send(204);
     });
+  });
+};
+
+exports.create = function(req, res) {
+  ReservaPendente.create(req.body, function(err, reserva) {
+    if(err) {  
+      return validationError(res, err); }
+    reserva.owner = req.user
+    reserva.save(function(err, reserva) {
+       if (err) return validationError(err);
+    })
+    return res.json(201, reserva);
   });
 };
 
