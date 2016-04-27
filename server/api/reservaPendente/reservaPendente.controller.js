@@ -31,18 +31,6 @@ exports.show = function(req, res) {
   });
 };
 
-// Creates a new sale in the DB.
-exports.create = function(req, res) {
-  Sale.create(req.body, function(err, sale) {
-    if(err) { return validationError(res, err); }
-    sale.owner = req.user;
-    sale.save(function(err, sale) {
-    	 if (err) return validationError(err);
-    })
-    return res.json(201, sale);
-  });
-};
-
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
   findById(req).exec(function (err, reserva) {
