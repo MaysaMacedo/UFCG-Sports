@@ -19,15 +19,10 @@ angular.module('finalnodeApp')
 				'auth' : true,
 				'icon' : 'plus'
 			}, {
-				'title' : 'Reservas Pendentes',
-				'link' : '/reserva_pendente',
+				'title' : 'Horários',
+				'link' : '/horario',
 				'auth' : true,
-				'icon' : 'plus'
-			}, {
-				'title' : 'Calendário',
-				'link' : '/property',
-				'auth' : true,
-				'icon' : 'calendar'
+				'icon' : 'clock-o'
 			}, {
 				'title' : 'Relatórios',
 				'link' : '/sale',
