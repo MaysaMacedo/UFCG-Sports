@@ -7,7 +7,7 @@ angular.module('finalnodeApp')
       $scope.reservas_pendentes = reservas_pendentes;
     });
     
-    $scope.noClients = function() {
+    $scope.noReserves = function() {
     	return $scope.reservas_pendentes.length === 0
     }
     
