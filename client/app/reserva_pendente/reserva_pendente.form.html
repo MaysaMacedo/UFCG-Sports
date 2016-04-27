@@ -2,7 +2,7 @@
 	ng-class="{ 'has-success': form.name.$valid && submitted,
                                             'has-error': form.name.$invalid && submitted }">
 	<label>Nome</label> <input ng-readonly="readOnly" type="text" name="name" class="form-control"
-		ng-model="client.nome" required />
+		ng-model="reserva_pendente.nome" required />
 	<p class="help-block" ng-show="form.name.$error.required && submitted">A
 		Nome é obrigatório</p>
 </div>
@@ -11,7 +11,7 @@
 	ng-class="{ 'has-success': form.email.$valid && submitted,
                                             'has-error': form.email.$invalid && submitted }">
 	<label>Email</label> <input ng-readonly="readOnly" type="email" name="email"
-		class="form-control" ng-model="client.email" required
+		class="form-control" ng-model="reserva_pendente.email" required
 		mongoose-error />
 	<p class="help-block" ng-show="form.email.$error.email && submitted">
 		Não parece com um email válido.</p>
@@ -22,7 +22,7 @@
 <div class="form-group"
 	ng-class="{ 'has-success': form.name.$valid && submitted,
                                             'has-error': form.name.$invalid && submitted }">
-	<label>Instalação esportiva</label> <input type="text" name="name" class="form-control" ng-model="client.recurso" required/>
+	<label>Instalação esportiva</label> <input type="text" name="name" class="form-control" ng-model="reserva_pendente.recurso" required/>
 	<p class="help-block" ng-show="form.name.$error.required && submitted">A
 		Instalação esportiva é obrigatório</p>
 </div>
@@ -30,17 +30,17 @@
 <div > 
 	<div style="float: left;">
 		<label>Data</label> 
-		<input type = "date" name = "data" id ="data" ng-model="client.data" required/> <br/> 
+		<input type = "date" name = "data" id ="data" ng-model="reserva_pendente.data" required/> <br/> 
 	</div>
 
 	<div style="float: right, position: relative;">
 		<label>Horário</label> 
-		<input type=number min=6 max=20 style="height: 40px;" ng-model="client.hora" required> 
+		<input type=number min=6 max=20 style="height: 40px;" ng-model="reserva_pendente.hora" required> 
 	</div>
 
 	<div style="float: right, position: relative;">
 		<label>Pessoas Inscritas</label> 
-		<input type=number min=0 max=22 style="height: 40px;" ng-model="client.qtdPessoas" required> / <input type=number min=0 max=22 style="height: 40px;" ng-model="client.qtdMinimaPessoas" required> 
+		<input type=number min=0 max=22 style="height: 40px;" ng-model="reserva_pendente.qtdPessoas" required> / <input type=number min=0 max=22 style="height: 40px;" ng-model="reserva_pendente.qtdMinimaPessoas" required> 
 	</div>
 	
 </div>

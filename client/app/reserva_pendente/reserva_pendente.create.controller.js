@@ -2,16 +2,14 @@
 
 angular.module('finalnodeApp')
   .controller('ReservaPendenteCreateCtrl', function ($scope, $http, $location, Auth) {
-    $scope.client = {}
+    $scope.reserva_pendente = {}
     $scope.errors = {};
     $scope.add = function(form) {
-      console.log("add function");
-      console.log($scope.client);
     	$scope.submitted = true;
-      if($scope.client === '') {
+      if($scope.reserva_pendente === '') {
         return;
       }
-      $http.post('/api/reservasPendentes', $scope.client).then( function() {
+      $http.post('/api/reservasPendentes', $scope.reserva_pendente).then( function() {
     	  $location.path('/reserva_pendente')
       }).catch(function(err) {
     	  err = err.data;

@@ -2,15 +2,15 @@
 
 angular.module('finalnodeApp')
   .controller('ReservaPendenteUpdateCtrl', function ($scope, $http, $routeParams, $location, Auth) {
-	$scope.client = {};
+	$scope.reserva_pendente = {};
 	$scope.errors = {};
 	
-	$http.get('/api/reservasPendentes/' + $routeParams.id).success(function(client) {
-	    $scope.client = client;
-      $scope.client.data = new Date($scope.client.data);
+	$http.get('/api/reservasPendentes/' + $routeParams.id).success(function(reserva_pendente) {
+	    $scope.reserva_pendente = reserva_pendente;
+      $scope.reserva_pendente.data = new Date($scope.reserva_pendente.data);
 	});
-	$scope.delete = function(client) {
-	  $http.delete('/api/reservasPendentes/' + client._id);
+	$scope.delete = function(reserva_pendente) {
+	  $http.delete('/api/reservasPendentes/' + reserva_pendente._id);
 	  $location.path('/reserva_pendente')
 	};
 	$scope.isAdmin = function() {
@@ -20,8 +20,8 @@ angular.module('finalnodeApp')
     $scope.save = function(form) {
     	$scope.submitted = true;
     	if(form.$valid) {
-            $http.put('/api/reservasPendentes/' + $scope.client._id, $scope.client).then( function() {
-          	  $location.path('/reserva_pendente/' + $scope.client._id);
+            $http.put('/api/reservasPendentes/' + $scope.reserva_pendente._id, $scope.reserva_pendente).then( function() {
+          	  $location.path('/reserva_pendente/' + $scope.reserva_pendente._id);
             }).catch(function(err) {
           	  err = err.data;
           	  $scope.errors = {};
