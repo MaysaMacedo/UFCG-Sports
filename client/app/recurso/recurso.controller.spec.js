@@ -74,10 +74,6 @@ describe('Controller: RecursoCtrl', function() {
 
             scope.recurso = { nome: "Quadra de Tennis", _id: 1 }
 
-            sinon.stub(window, "confirm", function() {
-                return true;
-            });
-
             scope.delete(scope.recurso);
 
             var recursoEsperado = { nome: "Quadra de Tennis", _id: 1 }
