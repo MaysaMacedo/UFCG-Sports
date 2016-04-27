@@ -3,8 +3,9 @@
 angular.module('finalnodeApp')
   .controller('ReservaPendenteIndexCtrl', function ($scope, $http, $location, Auth) {
     $scope.clients = [];
-    $http.get('/api/clients').success(function(clients) {
+    $http.get('/api/reservasPendentes').success(function(clients) {
       $scope.clients = clients;
+      console.log($scope.clients);
     });
     
     $scope.noClients = function() {
@@ -12,9 +13,9 @@ angular.module('finalnodeApp')
     }
     
     $scope.delete = function(client) {
-      $http.delete('/api/clients/' + client._id);
+      $http.delete('/api/reservasPendentes/' + client._id);
       $scope.clients = []
-      $http.get('/api/clients').success(function(clients) {
+      $http.get('/api/reservasPendentes').success(function(clients) {
           $scope.clients = clients;
         });
     };

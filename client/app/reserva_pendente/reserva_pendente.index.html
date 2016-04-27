@@ -1,8 +1,11 @@
 <div class="row">
 	<ul class="list-group">
 		<li class="list-group-item" ng-show="noClients()"><strong>Nenhuma reserva pendente cadastrada</strong><br></li>
-		<li class="list-group-item" ng-repeat="client in clients"><strong>{{client.name}}</strong><br>
-			<span class="text-muted">{{client.email}}</span> <a
+		<li class="list-group-item" ng-repeat="client in clients"><strong>{{client.nome}} </strong> <br>
+		<span class="text-muted">{{client.email}}</span> <br> <a
+		<span class="text-muted">Inscritos {{ client.qtdPessoas }} / {{ client.qtdMinimaPessoas }}</span> <br>
+		<span class="text-muted">Dia {{client.data | date:'dd/MM/yyyy'}}</span>
+			<span class="text-muted"> às {{client.hora}}h</span>  <a
 			ng-click="delete(client)" class="trash"><span
 				class="glyphicon glyphicon-trash pull-right"></span></a> <a
 			ng-click="show(client)" class="show"><span

@@ -5,11 +5,12 @@ angular.module('finalnodeApp')
 	$scope.client = {};
 	$scope.errors = {};
 	
-	$http.get('/api/clients/' + $routeParams.id).success(function(client) {
+	$http.get('/api/reservasPendentes/' + $routeParams.id).success(function(client) {
 	    $scope.client = client;
+      $scope.client.data = new Date($scope.client.data);
 	});
 	$scope.delete = function(client) {
-	  $http.delete('/api/clients/' + client._id);
+	  $http.delete('/api/reservasPendentes/' + client._id);
 	  $location.path('/reserva_pendente')
 	};
 	$scope.isAdmin = function() {
@@ -19,7 +20,7 @@ angular.module('finalnodeApp')
     $scope.save = function(form) {
     	$scope.submitted = true;
     	if(form.$valid) {
-            $http.put('/api/clients/' + $scope.client._id, $scope.client).then( function() {
+            $http.put('/api/reservasPendentes/' + $scope.client._id, $scope.client).then( function() {
           	  $location.path('/reserva_pendente/' + $scope.client._id);
             }).catch(function(err) {
           	  err = err.data;

@@ -5,11 +5,13 @@ angular.module('finalnodeApp')
     $scope.client = {}
     $scope.errors = {};
     $scope.add = function(form) {
+      console.log("add function");
+      console.log($scope.client);
     	$scope.submitted = true;
       if($scope.client === '') {
         return;
       }
-      $http.post('/api/clients', $scope.client).then( function() {
+      $http.post('/api/reservasPendentes', $scope.client).then( function() {
     	  $location.path('/reserva_pendente')
       }).catch(function(err) {
     	  err = err.data;
