@@ -15,11 +15,11 @@ function findById(req) {
 
 exports.index = function(req, res) {
   var query =  ReservaPendente.find()
-  query.exec(function(err, reservas) {
+  query.exec(function(err, reservasPendentes) {
     if (err) {
       return handleError(res, err);
     }
-    return res.json(200, reservas);
+    return res.json(200, reservasPendentes);
   });
 };
 
