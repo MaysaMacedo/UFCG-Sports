@@ -8,8 +8,10 @@ var ReservaSchema = new Schema({
   nome: { type: String, required: true},
   email: { type: String, required: true},
   data: { type: Date, required: true},
-  recurso: { type: Number, required: true},
-  hora: { type: Number, required: true}
+  dataLimite: { type: Date, required: true},
+  recurso: { type: String, required: true},
+  hora: { type: Number, required: true},
+  dono: { type: String, required: true}
 });
 
 ReservaSchema.statics.filters = function(){

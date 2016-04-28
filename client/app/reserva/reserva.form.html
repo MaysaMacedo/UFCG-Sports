@@ -1,7 +1,7 @@
 <div class="form-group"
 	ng-class="{ 'has-success': form.name.$valid && submitted,
                                             'has-error': form.name.$invalid && submitted }">
-	<label>Nome</label> <input ng-readonly="readOnly" type="text" name="name" class="form-control"
+	<label>Nome</label> <input type="text" name="name" class="form-control"
 		ng-model="reserva.nome" required />
 	<p class="help-block" ng-show="form.name.$error.required && submitted">A
 		Nome é obrigatório</p>
@@ -20,22 +20,30 @@
 </div>
 
 <div class="form-group"
-	ng-class="{ 'has-success': form.name.$valid && submitted,
-                                            'has-error': form.name.$invalid && submitted }">
-	<label>Instalação esportiva</label> <input type="text" name="name" class="form-control" ng-model="reserva.recurso" required/>
+	ng-class="{ 'has-success': form.recurso.$valid && submitted,
+                                            'has-error': form.recurso.$invalid && submitted }">
+	<label>Instalação esportiva</label> <select ng-if="!readOnly" name="recurso" class="form-control" ng-model="reserva.recurso" 
+												ng-change="reservaMaisRecenteDoRecurso()" required>
+	<option ng-repeat="recurso in recursos" ng-value="recurso.nome" ng-if="recurso.active" ng-selected="recurso.nome == reserva.recurso"> 
+		{{ recurso.nome }}
+	</option>
+	</select>
+	<input ng-if="readOnly" ng-readonly="true" type="text" name="name" class="form-control"
+		ng-model="reserva.recurso" required />
 	<p class="help-block" ng-show="form.name.$error.required && submitted">A
 		Instalação esportiva é obrigatório</p>
 </div>
 
 <div > 
 	<div style="float: left;">
-		<label>Data</label> 
-		<input type = "date" name = "data" id ="data" ng-model="reserva.data" required/> <br/> 
+		<label>Data {{minDiaReserva.getFullYear()}}-{{twoDigits(minDiaReserva.getMonth()+1)}}-{{twoDigits(minDiaReserva.getDate())}}</label> 
+		<input type = "date" name = "data" id ="data" ng-model="reserva.data" ng-readonly="readOnly"
+			min="{{minDiaReserva.getFullYear()}}-{{twoDigits(minDiaReserva.getMonth()+1)}}-{{twoDigits(minDiaReserva.getDate())}}"
+			max="{{maxDiaReserva.getFullYear()}}-{{twoDigits(maxDiaReserva.getMonth()+1)}}-{{twoDigits(maxDiaReserva.getDate())}}" required/> <br/> 
 	</div>
-
 	<div style="float: right, position: relative;">
 		<label>Horário</label> 
-		<input type=number min=6 max=20 style="height: 40px;" ng-model="reserva.hora" required> 
+		<input type=number min=6 max=20 style="height: 40px;" ng-model="reserva.hora" ng-readonly="readOnly" required> 
 	</div>
 	
 </div>

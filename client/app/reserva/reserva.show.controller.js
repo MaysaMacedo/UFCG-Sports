@@ -6,6 +6,7 @@ angular.module('finalnodeApp')
     $http.get('/api/reservas/' + $routeParams.id).success(function(reserva) {
         $scope.reserva = reserva;
         $scope.reserva.data = new Date($scope.reserva.data);
+        $apply();
     });
     $scope.delete = function(reserva) {
       $http.delete('/api/reservas/' + reserva._id);
