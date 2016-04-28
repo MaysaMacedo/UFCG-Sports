@@ -16,7 +16,7 @@ angular.module('finalnodeApp')
                 authenticate: true
             }).when('/horario/visualizar/:idRecurso', {
                 templateUrl: 'app/horario/horario.visualizacao.html',
-                controller: 'HorarioCtrl',
+                controller: 'CalendarioCtrl',
                 authenticate: true
             });
     });

@@ -5,7 +5,7 @@
 
     <ul class="list-group">
     <li class="list-group-item" name="list-group-item-horario-{{$index}}" ng-repeat="horario in horarios | orderBy: 'nome' | filter: {recurso: recurso._id}">
-            <span>{{events}}   horas</span>                
+            <span>{{horario.descricao}}   horas</span>                
         </li>
 
      </ul>

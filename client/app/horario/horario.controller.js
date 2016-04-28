@@ -10,39 +10,39 @@ angular.module('finalnodeApp').controller('HorarioCtrl', function($scope, $http,
 
     // CALENDARIO
 
-    $scope.calendarView = 'month';
-    $scope.calendarDate = new Date();
-    $scope.calendarTitle = "TESTE";
+//     $scope.calendarView = 'month';
+//     $scope.calendarDate = new Date();
+//     $scope.calendarTitle = "TESTE";
 
 
-    $scope.events = [
-        {
-        title: 'My event title', // The title of the event
-        type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
-        startsAt: new Date(2016,20,4,15), // A javascript date object for when the event starts
-        endsAt: new Date(2017,8,26,15), // Optional - a javascript date object for when the event ends
-        editable: false, // If edit-event-html is set and this field is explicitly set to false then dont make it editable.
-        deletable: false, // If delete-event-html is set and this field is explicitly set to false then dont make it deleteable
-        draggable: true, //Allow an event to be dragged and dropped
-        resizable: true, //Allow an event to be resizable
-        incrementsBadgeTotal: true, //If set to false then will not count towards the badge total amount on the month and year view
-        recursOn: 'year', // If set the event will recur on the given period. Valid values are year or month
-        cssClass: 'a-css-class-name' //A CSS class (or more, just separate with spaces) that will be added to the event when it is displayed on each view. Useful for marking an event as selected / active etc
-  }
-];
+//     $scope.events = [
+//         {
+//         title: 'My event title', // The title of the event
+//         type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
+//         startsAt: new Date(2016,20,4,15), // A javascript date object for when the event starts
+//         endsAt: new Date(2017,8,26,15), // Optional - a javascript date object for when the event ends
+//         editable: false, // If edit-event-html is set and this field is explicitly set to false then dont make it editable.
+//         deletable: false, // If delete-event-html is set and this field is explicitly set to false then dont make it deleteable
+//         draggable: true, //Allow an event to be dragged and dropped
+//         resizable: true, //Allow an event to be resizable
+//         incrementsBadgeTotal: true, //If set to false then will not count towards the badge total amount on the month and year view
+//         recursOn: 'year', // If set the event will recur on the given period. Valid values are year or month
+//         cssClass: 'a-css-class-name' //A CSS class (or more, just separate with spaces) that will be added to the event when it is displayed on each view. Useful for marking an event as selected / active etc
+//   }
+// ];
 
 
-    $scope.eventClicked = function(event) {
-      confirm("Tem certeza que deseja deletar?")
-    };
+//     $scope.eventClicked = function(event) {
+//       confirm("Tem certeza que deseja deletar?")
+//     };
 
-    $scope.eventEdited = function(event) {
-      confirm("Tem certeza que deseja deletar?")
-    };
+//     $scope.eventEdited = function(event) {
+//       confirm("Tem certeza que deseja deletar?")
+//     };
 
-    $scope.eventDeleted = function(event) {
-      confirm("Tem certeza que deseja deletar?")
-    };
+//     $scope.eventDeleted = function(event) {
+//       confirm("Tem certeza que deseja deletar?")
+//     };
 
     $scope.isAdmin = Auth.isAdmin;
 
@@ -77,21 +77,21 @@ angular.module('finalnodeApp').controller('HorarioCtrl', function($scope, $http,
 
     $scope.errors = {};
 
-    $scope.populaEvento = function(recurso) {
+    // $scope.populaEvento = function(recurso) {
 
-        console.log(recurso._id);
-        var size = $scope.horarios.length;
-        console.log(size);
-        for (var i = 0; i < size ; i++) {
-                if($scope.horarios[i].recurso == recurso._id) {
-                    console.log("eh igual");
-                    $scope.events.push({title: $scope.horarios[i].descricao , type: 'important', 
-                        startsAt: $scope.horarios[i].data, endsAt: $scope.horarios[i].data, draggable: true, resizable: true})
-                }
-         };
-         console.log($scope.events);
+    //     console.log(recurso._id);
+    //     var size = $scope.horarios.length;
+    //     console.log(size);
+    //     for (var i = 0; i < size ; i++) {
+    //             if($scope.horarios[i].recurso == recurso._id) {
+    //                 console.log("eh igual");
+    //                 $scope.events.push({title: $scope.horarios[i].descricao , type: 'important', 
+    //                     startsAt: $scope.horarios[i].data, endsAt: $scope.horarios[i].data, draggable: true, resizable: true})
+    //             }
+    //      };
+    //      console.log($scope.events);
 
-    }
+    // }
 
     $scope.submiterForm = function(form) {
         if ($routeParams.id) {
