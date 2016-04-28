@@ -8,21 +8,26 @@ angular.module('finalnodeApp')
 				'link' : '/',
 				'auth' : false,
 				'icon' : 'home'
-			},{
+			}, {
 				'title' : 'Recursos Esportivos',
 				'link' : '/recurso',
 				'auth' : true,
 				'icon' : 'th'
-			},{
+			}, {
 				'title' : 'Reservas',
 				'link' : '/reserva',
 				'auth' : true,
 				'icon' : 'plus'
 			}, {
-				'title' : 'Calendário',
-				'link' : '/property',
+				'title' : 'Reservas Pendentes',
+				'link' : '/reserva_pendente',
 				'auth' : true,
-				'icon' : 'calendar'
+				'icon' : 'plus'
+			}, {
+				'title' : 'Horários',
+				'link' : '/horario',
+				'auth' : true,
+				'icon' : 'clock-o'
 			}, {
 				'title' : 'Relatórios',
 				'link' : '/sale',
