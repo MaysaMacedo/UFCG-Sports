@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('finalnodeApp').controller('HorarioCtrl', function($scope, $http, $location, $routeParams, Auth, moment) {
+angular.module('finalnodeApp').controller('HorarioCtrl', function($scope, $http, $location, $routeParams, Auth) {
     var URI_HORARIO = '/api/horarios/';
     var URI_RECURSO = '/api/recursos/';
 
@@ -38,7 +38,6 @@ angular.module('finalnodeApp').controller('HorarioCtrl', function($scope, $http,
     $scope.recurso = {};
 
     $scope.errors = {};
-
 
     $scope.submiterForm = function(form) {
         if ($routeParams.id) {
@@ -85,7 +84,6 @@ angular.module('finalnodeApp').controller('HorarioCtrl', function($scope, $http,
         });
     };
 
-
     $scope.getDiaDaSemana = function(data) {
         var d = new Date(data);
         var weekday = new Array(7);
@@ -126,13 +124,8 @@ angular.module('finalnodeApp').controller('HorarioCtrl', function($scope, $http,
             $http.get(URI_RECURSO + $routeParams.idRecurso).success(function(recurso) {
                 $scope.recurso = recurso;
 
-            });
-            
+            });           
             
          };
-
-
-        
-
     })();
 });

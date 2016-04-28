@@ -5,7 +5,7 @@ angular.module('finalnodeApp').controller('CalendarioCtrl', function($scope, $ht
 
     $scope.calendarView = 'month';
     $scope.calendarDate = new Date();
-    $scope.calendarTitle = "TESTE";
+    $scope.calendarTitle = "Calendario";
 
     $scope.horarios = [];
 
@@ -31,7 +31,7 @@ angular.module('finalnodeApp').controller('CalendarioCtrl', function($scope, $ht
 	        $scope.horarios = horarios;
 
 	        var size = $scope.horarios.length;
-        	console.log(size);
+        	
         	for (var i = 0; i < size ; i++) {
                 if($scope.horarios[i].recurso == $routeParams.idRecurso) {
                     $scope.events.push({title: $scope.horarios[i].descricao , type: 'important', 
