@@ -14,5 +14,9 @@ angular.module('finalnodeApp')
                 templateUrl: 'app/horario/horario.form.html',
                 controller: 'HorarioCtrl',
                 authenticate: true
+            }).when('/horario/visualizar/:idRecurso', {
+                templateUrl: 'app/horario/horario.visualizacao.html',
+                controller: 'HorarioCtrl',
+                authenticate: true
             });
     });

@@ -5,6 +5,11 @@
     <ul class="list-group">
         <li class="list-group-item" style="background:#F5F5F5;color:black;">
             <strong>{{recursoEsportivo.nome}}</strong>
+            <a class="pull-right" style="color:#263238;"  href="/horario/visualizar/{{recursoEsportivo._id}}"
+                ng-mouseover="mouseOver = ' Visualizar Calendário'"
+                ng-mouseleave="mouseOver = ''">
+                <span class="fa fa-plus"><strong>{{mouseOver}}</strong></span>
+            </a>
             <a data-ng-show="isAdmin()" class="pull-right" style="color:#263238;" href="/horario/new/{{recursoEsportivo._id}}"
                 ng-mouseover="mouseOver = ' Adicionar horário'"
                 ng-mouseleave="mouseOver = ''">
@@ -15,9 +20,10 @@
             <br>
         </li>
         <li class="list-group-item" name="list-group-item-horario-{{$index}}" ng-repeat="horario in horarios | orderBy: 'nome' | filter: {recurso: recursoEsportivo._id}">
-            <span>{{horario.descricao}} toda(o) {{getDiaDaSemana(horario.data)}} às {{formatarHora(horario.hora)}} horas</span>
+            <span>{{horario.descricao}} toda(o) {{getDiaDaSemana(horario.data)}} às {{formatarHora(horario.hora)}} horas</span>                
             <a data-ng-show="isAdmin()" ng-click="delete(horario)" title="Deletar" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
             <a data-ng-show="isAdmin()" href="/horario/edit/{{horario._id}}" title="Editar" class="show"><span class="glyphicon glyphicon glyphicon-pencil pull-right"></span></a>
         </li>
+        
     </ul>
 </div>
