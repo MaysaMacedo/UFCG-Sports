@@ -22,7 +22,7 @@ angular.module('finalnodeApp')
 				'title' : 'Reservas Pendentes',
 				'link' : '/reserva_pendente',
 				'auth' : true,
-				'icon' : 'hourglass-half'
+				'icon' : 'plus'
 			}, {
 				'title' : 'Horários',
 				'link' : '/horario',

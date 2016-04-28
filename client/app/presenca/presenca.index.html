@@ -1,0 +1,17 @@
+<div class="row">
+	<ul class="list-group">
+		<li class="list-group-item" ng-show="noReservas()"><strong>Nenhuma reserva pendente cadastrada</strong><br></li>
+		<li class="list-group-item" ng-repeat="reserva in reservas"><strong>{{reserva.nome}} </strong> <br>
+		<span class="text-muted">{{reserva.email}}</span> <br>
+		<span class="text-muted">Dia {{reserva.data  | date:'dd/MM/yyyy'}}</span>
+	    <span class="text-muted"> às {{reserva.hora}}h</span>
+				<label class="show"> 
+					{{presenca}}
+    				<input type="checkbox" ng-model="presenca" ng-true-value="'Presente'" ng-false-value="'Ausente'">
+					
+  				</label>
+				
+		</li>
+	</ul>
+	<a class="btn btn-default btn-lg btn-register" href="/reserva/new">Criar reserva pendente</a>
+</div>

@@ -2,7 +2,7 @@
 	<ul class="list-group">
 		<li class="list-group-item" ng-show="noReserves()"><strong>Nenhuma reserva pendente cadastrada</strong><br></li>
 		<li class="list-group-item" ng-repeat="reserva_pendente in reservas_pendentes"><strong>{{reserva_pendente.nome}} </strong> <br>
-		<span class="text-muted">{{reserva_pendente.email}}</span> <br> <a
+		<span class="text-muted">{{reserva_pendente.email}}</span> <br>
 		<span class="text-muted">Inscritos {{ reserva_pendente.qtdPessoas }} / {{ reserva_pendente.qtdMinimaPessoas }}</span> <br>
 		<span class="text-muted">Dia {{reserva_pendente.data | date:'dd/MM/yyyy'}}</span>
 			<span class="text-muted"> às {{reserva_pendente.hora}}h</span>  <a
