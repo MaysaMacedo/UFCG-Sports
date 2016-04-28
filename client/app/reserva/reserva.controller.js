@@ -3,10 +3,11 @@
 angular.module('finalnodeApp')
   .controller('ReservaIndexCtrl', function ($scope, $http, $location, Auth) {
     $scope.reservas = [];
+
     $http.get('/api/reservas').success(function(reservas) {
       $scope.reservas = reservas;
     });
-    
+
     $scope.noClients = function() {
       return $scope.reservas.length === 0
     }

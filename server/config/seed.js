@@ -48,11 +48,11 @@ User.create({
 
 Recurso.find({}).remove(function() {
   Recurso.create([
-    {nome: 'Ginásio'},
+    {nome: 'Ginásio', active: true},
     {nome: 'Quadra de Tennis'},
-    {nome: 'Quadra de Vôlei de Praia 1'},
+    {nome: 'Quadra de Vôlei de Praia 1', active: true},
     {nome: 'Quadra de Vôlei de Praia 2'},
-    {nome: 'Quadra de Futebol de Areia'},
+    {nome: 'Quadra de Futebol de Areia', active: true},
     {nome: 'Mini-campo'},
     {nome: 'Campo'}
     ], function() {

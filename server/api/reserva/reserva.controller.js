@@ -16,7 +16,12 @@ function findById(req) {
 
 // Retorna todas as reservas
 exports.index = function(req, res) {
-  var query =  Reserva.find()
+  var query = Reserva.find({'dono': req.user._id})
+
+  if(auth.isAdmin(req.user)) {
+    query = Reserva.find()
+  }
+
   query.exec(function(err, reservas) {
     if (err) {
       return handleError(res, err);
@@ -62,10 +67,11 @@ exports.destroy = function(req, res) {
 
 // Cria uma reserva no BD
 exports.create = function(req, res) {
+  console.log(req.user)
   Reserva.create(req.body, function(err, reserva) {
     if(err) {  
       return validationError(res, err); }
-    reserva.owner = req.user
+    reserva.dono = req.user._id;
     reserva.save(function(err, reserva) {
        if (err) return validationError(err);
     })
