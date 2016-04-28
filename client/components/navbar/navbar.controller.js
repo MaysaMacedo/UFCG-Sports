@@ -58,6 +58,10 @@ angular.module('finalnodeApp')
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
+    $scope.escondeItem = function(item) {
+    	return item.auth && !$scope.isLoggedIn() || item.admin && !$scope.isAdmin();
+	};
+
     $scope.logout = function() {
       Auth.logout();
       $location.path('/login');
