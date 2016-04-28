@@ -5,14 +5,13 @@
     <ul class="list-group">
         <li class="list-group-item" style="background:#F5F5F5;color:black;">
             <strong>{{recursoEsportivo.nome}}</strong>
-            <a class="pull-right" style="color:#263238;"  href="/horario/visualizar/{{recursoEsportivo._id}}"
-                ng-mouseover="mouseOver = ' Visualizar Calendário'"
-                ng-mouseleave="mouseOver = ''">
-                <span class="fa fa-plus"><strong>{{mouseOver}}</strong></span>
+            <a class="pull-right" style="color:#263238;"  href="/horario/show/{{recursoEsportivo._id}}"
+                >
+                <span class="fa fa-calendar custom"><strong>{{mouseOver}}</strong></span>
             </a>
+            
             <a data-ng-show="isAdmin()" class="pull-right" style="color:#263238;" href="/horario/new/{{recursoEsportivo._id}}"
-                ng-mouseover="mouseOver = ' Adicionar horário'"
-                ng-mouseleave="mouseOver = ''">
+                >
                 <span class="fa fa-plus"><strong>{{mouseOver}}</strong></span>
             </a>
         </li>

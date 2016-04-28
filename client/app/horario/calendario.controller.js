@@ -26,33 +26,22 @@ angular.module('finalnodeApp').controller('CalendarioCtrl', function($scope, $ht
 ];
 
 
-    $scope.eventClicked = function(event) {
-      confirm("Tem certeza que deseja deletar?")
-    };
-
-    $scope.eventEdited = function(event) {
-      confirm("Tem certeza que deseja deletar?")
-    };
-
-    $scope.eventDeleted = function(event) {
-      confirm("Tem certeza que deseja deletar?")
-    };
-
     (function main() {
 	    $http.get(URI_HORARIO).success(function(horarios) {
 	        $scope.horarios = horarios;
-	    });
 
-
-        var size = $scope.horarios.length;
-        console.log(size);
-        for (var i = 0; i < size ; i++) {
+	        var size = $scope.horarios.length;
+        	console.log(size);
+        	for (var i = 0; i < size ; i++) {
                 if($scope.horarios[i].recurso == $routeParams.idRecurso) {
-                    console.log("eh igual");
                     $scope.events.push({title: $scope.horarios[i].descricao , type: 'important', 
                         startsAt: $scope.horarios[i].data, endsAt: $scope.horarios[i].data, draggable: true, resizable: true})
                 }
          };
+	    });
+
+
+
 })();
 
 });
