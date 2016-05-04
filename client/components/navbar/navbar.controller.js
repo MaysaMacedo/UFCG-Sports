@@ -22,12 +22,19 @@ angular.module('finalnodeApp')
 				'title' : 'Reservas Pendentes',
 				'link' : '/reserva_pendente',
 				'auth' : true,
-				'icon' : 'plus'
+				'icon' : 'plus',
+				'admin': true
 			}, {
 				'title' : 'Horários',
 				'link' : '/horario',
 				'auth' : true,
 				'icon' : 'clock-o'
+			}, {
+				'title' : 'Lista de Presença',
+				'link' : '/presenca',
+				'auth' : true,
+				'icon' : 'list',
+				'admin' : true
 			}, {
 				'title' : 'Relatórios',
 				'link' : '/sale',
@@ -43,12 +50,17 @@ angular.module('finalnodeApp')
 				'link' : '/externalapp',
 				'auth' : true,
 				'icon' : 'tty'
+
 			} ];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
+
+    $scope.escondeItem = function(item) {
+    	return item.auth && !$scope.isLoggedIn() || item.admin && !$scope.isAdmin();
+	};
 
     $scope.logout = function() {
       Auth.logout();
