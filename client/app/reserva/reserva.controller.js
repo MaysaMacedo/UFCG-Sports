@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('finalnodeApp')
-  .controller('ReservaIndexCtrl', function ($scope, $http, $location, Auth) {
+  .controller('ReservaIndexCtrl', function ($scope, $http, $location) {
     $scope.reservas = [];
 
     $http.get('/api/reservas').success(function(reservas) {

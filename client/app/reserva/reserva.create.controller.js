@@ -21,10 +21,11 @@ angular.module('finalnodeApp')
     }
 
     $scope.reservaMaisRecenteDoRecurso = function() {
+      var SEIS_DIAS = 6;
       $scope.reserva.data = undefined;
       $scope.minDiaReserva = new Date();
       $scope.maxDiaReserva = new Date();
-      $scope.maxDiaReserva.setDate($scope.minDiaReserva.getDate() + 6);
+      $scope.maxDiaReserva.setDate($scope.minDiaReserva.getDate() + SEIS_DIAS);
 
       $http.get('/api/reservas').success(function(reservas) {
         if(reservas.length > 0) {
@@ -33,7 +34,7 @@ angular.module('finalnodeApp')
           var dataReserva = new Date();
           if(reservaMaisRecente.recurso == $scope.reserva.recurso) {
             dataReserva = new Date(reservaMaisRecente.data);
-            dataReserva.setDate(dataReserva.getDate()+6);
+            dataReserva.setDate(dataReserva.getDate()+SEIS_DIAS);
           }
           if(dataReserva.getTime() - $scope.minDiaReserva.getTime() > 0) {
             $scope.minDiaReserva = dataReserva;
