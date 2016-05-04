@@ -11,7 +11,7 @@ var ReservaSchema = new Schema({
   dataLimite: { type: Date, required: true},
   recurso: { type: String, required: true},
   hora: { type: Number, required: true},
-  dono: { type: String, required: true}
+  dono: [{ type: Schema.Types.ObjectId, ref: 'User'}]
 });
 
 ReservaSchema.statics.filters = function(){

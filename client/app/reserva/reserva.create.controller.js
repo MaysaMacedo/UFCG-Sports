@@ -2,7 +2,7 @@
 
 angular.module('finalnodeApp')
   .controller('ReservaCreateCtrl', function ($scope, $http, $location, Auth) {
-    $scope.reserva = {'dono': Auth.getCurrentUser()._id};
+    $scope.reserva = {};
     $scope.errors = {};
     $scope.recursos = [];
 
@@ -10,27 +10,37 @@ angular.module('finalnodeApp')
     $scope.maxDiaReserva = new Date();
     $scope.maxDiaReserva.setDate($scope.minDiaReserva.getDate() + 6);
 
+    function ordenaReservasPorRecursoEData(reserva1, reserva2) {
+      if(reserva1.recurso == reserva2.recurso) {
+        return new Date(reserva2.data) - new Date(reserva1.data);
+      }
+      if(reserva2.recurso == $scope.reserva.recurso) {
+        return 1;
+      }
+      return -1;
+    }
+
     $scope.reservaMaisRecenteDoRecurso = function() {
+      $scope.reserva.data = undefined;
       $scope.minDiaReserva = new Date();
-      console.log($scope.minDiaReserva)
+      $scope.maxDiaReserva = new Date();
+      $scope.maxDiaReserva.setDate($scope.minDiaReserva.getDate() + 6);
+
       $http.get('/api/reservas').success(function(reservas) {
-        reservas.sort(function(reserva1, reserva2){
-          if(reserva1.recurso == reserva2.recurso) {
-            return new Date(reserva2.data) - new Date(reserva1.data);
+        if(reservas.length > 0) {
+          reservas.sort(ordenaReservasPorRecursoEData);
+          var reservaMaisRecente = reservas[0];
+          var dataReserva = new Date();
+          if(reservaMaisRecente.recurso == $scope.reserva.recurso) {
+            dataReserva = new Date(reservaMaisRecente.data);
+            dataReserva.setDate(dataReserva.getDate()+6);
           }
-          if(reserva2.recurso == $scope.reserva.recurso) {
-            return 1;
+          if(dataReserva.getTime() - $scope.minDiaReserva.getTime() > 0) {
+            $scope.minDiaReserva = dataReserva;
           }
-          return -1;
-        });
-        var reservaMaisRecente = reservas[0];
-        var dataReserva = new Date();
-        if(reservaMaisRecente.recurso == $scope.reserva.recurso) {
-          dataReserva = new Date(reservaMaisRecente.data);
-          dataReserva.setDate(dataReserva.getDate()+6);
-        }
-        if(dataReserva - $scope.minDiaReserva) {
-          $scope.minDiaReserva = dataReserva;
+          if($scope.minDiaReserva.getTime() - $scope.maxDiaReserva.getTime() > 0) {
+            alert("Você não pode reservar o mesmo recurso duas vezes na mesma semana.");
+          }
         }
       });
     }

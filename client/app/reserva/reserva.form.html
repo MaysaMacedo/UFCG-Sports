@@ -36,7 +36,7 @@
 
 <div > 
 	<div style="float: left;">
-		<label>Data {{minDiaReserva.getFullYear()}}-{{twoDigits(minDiaReserva.getMonth()+1)}}-{{twoDigits(minDiaReserva.getDate())}}</label> 
+		<label>Data</label> 
 		<input type = "date" name = "data" id ="data" ng-model="reserva.data" ng-readonly="readOnly"
 			min="{{minDiaReserva.getFullYear()}}-{{twoDigits(minDiaReserva.getMonth()+1)}}-{{twoDigits(minDiaReserva.getDate())}}"
 			max="{{maxDiaReserva.getFullYear()}}-{{twoDigits(maxDiaReserva.getMonth()+1)}}-{{twoDigits(maxDiaReserva.getDate())}}" required/> <br/> 
