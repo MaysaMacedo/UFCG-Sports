@@ -1,19 +1,15 @@
 'use strict';
 
-angular.module('finalnodeApp').controller('SignupCtrl', function($scope, Auth, $location, $window) {
-    $scope.user = {};
+angular.module('finalnodeApp').controller('FistLoginCtrl', function($scope, Auth, $location, $window) {
+    $scope.user = Auth.getCurrentUser();
     $scope.errors = {};
 
-    $scope.firstLogin = function() {
-        return false;
-    };
-
-    $scope.register = function(form) {
+    $scope.salvar = function(form) {
         $scope.submitted = true;
 
         if (form.$valid) {
             $scope.user.firstLogin = false;
-            Auth.createUser($scope.user)
+            Auth.updateUser($scope.user)
                 .then(function() {
                     // Account created, redirect to home
                     $location.path('/');
@@ -31,7 +27,5 @@ angular.module('finalnodeApp').controller('SignupCtrl', function($scope, Auth, $
         }
     };
 
-    $scope.loginOauth = function(provider) {
-        $window.location.href = '/auth/' + provider;
-    };
+    $scope.firstLogin = Auth.isFirstLogin;
 });
