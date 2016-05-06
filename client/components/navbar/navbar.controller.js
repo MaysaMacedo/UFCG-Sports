@@ -30,6 +30,11 @@ angular.module('finalnodeApp')
 				'auth' : true,
 				'icon' : 'clock-o'
 			}, {
+				'title' : 'Tabela de Jogos',
+				'link' : '/tabela',
+				'auth' : true,
+				'icon' : 'table'
+			}, {
 				'title' : 'Lista de Presença',
 				'link' : '/presenca',
 				'auth' : true,
