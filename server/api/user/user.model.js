@@ -13,12 +13,15 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
+  firstLogin: Boolean,
   hashedPassword: String,
   provider: String,
   salt: String,
   apps: [AppSchema],
   google: {},
-  github: {}
+  github: {},
+  matricula: String,
+  telefone: String
 });
 
 /**

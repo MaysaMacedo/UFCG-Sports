@@ -81,7 +81,9 @@ angular.module('finalnodeApp', [
         if (next.authenticate && !loggedIn) {
           $location.path('/login');
         } else if(loggedIn && next.onlyAdmin && !Auth.isAdmin()) {
-        	$location.path('/404')
+        	$location.path('/404');
+        } else if (loggedIn && Auth.isFirstLogin()) {
+          $location.path('/firstLogin');
         }
       });
     });
