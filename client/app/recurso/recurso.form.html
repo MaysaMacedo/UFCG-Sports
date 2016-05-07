@@ -8,6 +8,15 @@
                                                             'has-error': form.nome.$invalid && submitted }">
                 <label>Nome</label>
                 <input type="text" name="nome" class="form-control" ng-model="recurso.nome" required />
+                <label>
+                    Em Atividade
+                    <input type="checkbox" ng-model="recurso.active" >
+                </label>
+                <br>
+                <label>
+                    Recurso Privado
+                    <input type="checkbox" ng-model="recurso.private" >
+                </label>
             </div>
             <button class="btn btn-success" type="submit">
                 Salvar</button>
