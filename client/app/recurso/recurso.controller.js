@@ -29,7 +29,6 @@ angular.module('finalnodeApp').controller('RecursoCtrl', function($scope, $http,
     $scope.errors = {};
 
     $scope.submiterForm = function(form) {
-        console.log($scope.recurso);
         if ($routeParams.id) {
             self.salvarRecurso(form);
         } else {
