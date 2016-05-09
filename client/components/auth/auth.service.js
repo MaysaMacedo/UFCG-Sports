@@ -71,6 +71,12 @@ angular.module('finalnodeApp')
           }.bind(this)).$promise;
       },
 
+      updateUser: function(user, callback) {
+        var cb = callback || angular.noop;
+
+        return User.update(user).$promise;
+      },
+
       /**
        * Change password
        *
@@ -141,6 +147,13 @@ angular.module('finalnodeApp')
        */
       getToken: function() {
         return $cookieStore.get('token');
+      },
+
+      /**
+       * Check if is the first login
+       */
+      isFirstLogin: function() {
+        return currentUser.firstLogin;
       }
     };
   });

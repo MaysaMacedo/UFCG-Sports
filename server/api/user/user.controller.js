@@ -1,5 +1,6 @@
 'use strict';
 
+var _ = require('lodash');
 var User = require('./user.model');
 var passport = require('passport');
 var config = require('../../config/environment');
@@ -44,6 +45,25 @@ exports.show = function (req, res, next) {
     if (err) return next(err);
     if (!user) return res.send(401);
     res.json(user.profile);
+  });
+};
+
+/**
+ * Update a single user
+ */
+exports.update = function (req, res) {
+  var userId = req.params.id;
+  if(req.body._id) { 
+    delete req.body._id;
+  }
+  User.findById(userId).exec(function (err, user) {
+    if (err) { return handleError(res, err); }
+    if(!user) { return res.send(404); }
+    var updated = _.merge(user, req.body);
+    updated.save(function (err) {
+      if (err) { return validationError(res, err); }
+      return res.json(200, user);
+    });
   });
 };
 
@@ -99,3 +119,7 @@ exports.me = function(req, res, next) {
 exports.authCallback = function(req, res, next) {
   res.redirect('/');
 };
+
+function handleError(res, err) {
+  return res.send(500, err);
+}

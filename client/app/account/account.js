@@ -15,5 +15,10 @@ angular.module('finalnodeApp')
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsCtrl',
         authenticate: true
+      })
+      .when('/firstLogin', {
+        templateUrl: 'app/account/signup/firstLogin.html',
+        controller: 'FistLoginCtrl',
+        authenticate: true
       });
   });
