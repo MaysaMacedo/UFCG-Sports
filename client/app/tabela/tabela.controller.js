@@ -10,26 +10,28 @@ angular.module('finalnodeApp')
     $scope.recurso = undefined;
     $scope.userIDToName = {};
 
-    var horarioPromise = $http.get('/api/horarios').then(function(response) {
-      $scope.horarios = response.data;
-    });
+    function carregarInformacoes() {
+      var horarioPromise = $http.get('/api/horarios').then(function(response) {
+        $scope.horarios = response.data;
+      });
 
-    var recursoPromise = $http.get('/api/recursos').then(function(response) {
-      var recursos = response.data;
-      for(var chave in recursos) {
-        var recurso = recursos[chave];
-        if(recurso.active) {
-          $scope.recursos.push(recurso);
+      var recursoPromise = $http.get('/api/recursos').then(function(response) {
+        var recursos = response.data;
+        for(var chave in recursos) {
+          var recurso = recursos[chave];
+          if(recurso.active) {
+            $scope.recursos.push(recurso);
+          }
         }
-      }
-      if($scope.recursos.length > 0) {
-        $scope.recurso = $scope.recursos[0];
-      }
-    });
+        if($scope.recursos.length > 0) {
+          $scope.recurso = $scope.recursos[0];
+        }
+      });
 
-    $q.all([horarioPromise, recursoPromise]).then(function() {
-      $scope.repopulaTabela();
-    });
+      $q.all([horarioPromise, recursoPromise]).then(function() {
+        $scope.repopulaTabela();
+      });
+    }
 
     function zeraTempoDia(data) {
       data.setHours(0,0,0,0);
@@ -42,7 +44,12 @@ angular.module('finalnodeApp')
     }
 
     function horarioAExibir(horario) {
-      var semanaEmMilisegundos = 1000*60*60*24*7;
+      var segundoEmMilisegundos = 1000;
+      var minutoEmSegundos = 60;
+      var horaEmMinutos = 60;
+      var diaEmHoras = 24;
+      var semanaEmDias = 7;
+      var semanaEmMilisegundos = semanaEmDias*diaEmHoras*horaEmMinutos*minutoEmSegundos*segundoEmMilisegundos;
       var recursoCorreto = horario.recurso == $scope.recurso._id;
       var diferencaDeTempo = zeraTempoDia($scope.dia).getTime() - zeraTempoDia(new Date(horario.data)).getTime();
       var diaCorreto = diferencaDeTempo == 0 || 
@@ -70,8 +77,9 @@ angular.module('finalnodeApp')
     }
 
     $scope.formataHora = function(horario) {
+      var minutosEmUmaHora = 60;
       var horas = Math.floor(horario).toString();
-      var minutos = ((horario - horas)*60).toString();
+      var minutos = ((horario - horas)*minutosEmUmaHora).toString();
       if(minutos.length == 1) {
         minutos += "0";
       }
@@ -81,4 +89,8 @@ angular.module('finalnodeApp')
     $scope.nomeUsuario = function(usuarioID) {
       return $scope.userIDToName[usuarioID];
     }
+
+    (function main() {
+      carregarInformacoes();
+    })();
   });
