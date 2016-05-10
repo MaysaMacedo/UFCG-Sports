@@ -7,7 +7,8 @@ var validate = require('mongoose-validate')
 
 var RecursoSchema = new Schema({
     nome: { type: String, required: true },
-    active: Boolean
+    active: { type:String, required: false},
+    private: { type: String, required: false}
 });
 
 RecursoSchema.statics.filters = function() {

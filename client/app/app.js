@@ -6,7 +6,8 @@ angular.module('finalnodeApp', [
   'ngSanitize',
   'ngRoute',
   'ui.bootstrap',
-   'mwl.calendar'
+   'mwl.calendar',
+   'chart.js'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider

@@ -6,7 +6,7 @@ angular.module('finalnodeApp').controller('RecursoCtrl', function($scope, $http,
     var self = this;
 
     $scope.recursos = [];
-
+    
     $scope.recursosVazio = function() {
         return $scope.recursos.length === 0;
     };
@@ -23,7 +23,8 @@ angular.module('finalnodeApp').controller('RecursoCtrl', function($scope, $http,
 
     // Criar e editar recurso
 
-    $scope.recurso = {};
+    $scope.recurso = { active: true,
+                       private: false };
 
     $scope.errors = {};
 
