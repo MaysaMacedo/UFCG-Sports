@@ -18,6 +18,11 @@
                     <input type="checkbox" ng-model="recurso.private" >
                 </label>
             </div>
+            <div class="form-group" ng-class="{ 'has-success': form.minPessoas.$valid && submitted,
+                                                            'has-error': form.minPessoas.$invalid && submitted }">
+                <label>Mínimo de Pessoas</label>
+                <input type="number" name="minPessoas" class="form-control" ng-model="recurso.minPessoas" required />
+            </div>
             <button class="btn btn-success" type="submit">
                 Salvar</button>
             <a href="/recurso" class="btn btn-danger">

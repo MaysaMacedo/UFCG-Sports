@@ -48,13 +48,13 @@ User.create({
 
 Recurso.find({}).remove(function() {
   Recurso.create([
-    {nome: 'Ginásio', active: true},
-    {nome: 'Quadra de Tennis'},
-    {nome: 'Quadra de Vôlei de Praia 1', active: true},
-    {nome: 'Quadra de Vôlei de Praia 2'},
-    {nome: 'Quadra de Futebol de Areia', active: true},
-    {nome: 'Mini-campo'},
-    {nome: 'Campo'}
+    {nome: 'Ginásio', minPessoas: 5},
+    {nome: 'Quadra de Tennis', minPessoas: 1},
+    {nome: 'Quadra de Vôlei de Praia 1', minPessoas: 2},
+    {nome: 'Quadra de Vôlei de Praia 2', minPessoas: 2},
+    {nome: 'Quadra de Futebol de Areia', minPessoas: 5},
+    {nome: 'Mini-campo', minPessoas: 6},
+    {nome: 'Campo', minPessoas: 12}
     ], function() {
       console.log('Recursos esportivos populados com sucesso!');
     }
