@@ -5,6 +5,12 @@ angular.module('finalnodeApp').controller('RecursoCtrl', function($scope, $http,
 
     var self = this;
 
+    var MAX_HORAS_DIA = 24;
+
+    var MIN_HORAS_DIA = 0;
+
+    var HORARIO_DEFAULT = 5;
+
     $scope.recursos = [];
     
     $scope.recursosVazio = function() {
@@ -23,7 +29,8 @@ angular.module('finalnodeApp').controller('RecursoCtrl', function($scope, $http,
 
     // Criar e editar recurso
 
-    $scope.recurso = { active: true,
+    $scope.recurso = { horariosDisponiveis: [HORARIO_DEFAULT],
+                       active: true,
                        private: false };
 
     $scope.errors = {};
@@ -34,7 +41,7 @@ angular.module('finalnodeApp').controller('RecursoCtrl', function($scope, $http,
         } else {
             self.criarRecurso(form);
         }
-    }
+    };
 
     this.salvarRecurso = function(form) {
         if ($scope.recurso.nome === '') {
@@ -74,10 +81,12 @@ angular.module('finalnodeApp').controller('RecursoCtrl', function($scope, $http,
     };
 
     $scope.addHorario = function() {
-        var length = $scope.recurso.horariosDisponiveis.length
-        var novoHorario = $scope.recurso.horariosDisponiveis[length-1]+1;
-        if (novoHorario === 24) {
-            novoHorario = 0;
+        var length = $scope.recurso.horariosDisponiveis.length;
+        var novoHorario = $scope.recurso.horariosDisponiveis[length - 1] + 1;
+        if (novoHorario === MAX_HORAS_DIA) {
+            novoHorario = MIN_HORAS_DIA;
+        } else if (length === 0) {
+            novoHorario = HORARIO_DEFAULT;
         }
         $scope.recurso.horariosDisponiveis.push(novoHorario);
     };
