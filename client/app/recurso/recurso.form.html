@@ -23,6 +23,28 @@
                 <label>Mínimo de Pessoas</label>
                 <input type="number" name="minPessoas" class="form-control" ng-model="recurso.minPessoas" required />
             </div>
+            <hr>
+            <li class="list-group-item">
+                <strong>Blocos de Horários Disponíveis</strong>
+                <a class="pull-right" style="color:black;" data-ng-click="addHorario()" ng-mouseover="mouseOver = ' Adicionar Horário'" ng-mouseleave="mouseOver = ''">
+                    <span class="fa fa-plus"><strong>{{mouseOver}}</strong></span>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div data-ng-repeat="horario in recurso.horariosDisponiveis track by $index">
+                        <div  class="form-group col-md-2 col-xs-3">
+                            <input type="number" name="minPessoas" class="form-control" ng-model="recurso.horariosDisponiveis[$index]" />
+                            </div>
+                        <div class="col-md-1 col-xs-1">
+                            <a style="color:black;" data-ng-click="removeHorario($index)">
+                            <span class="fa fa-times"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <br>
             <button class="btn btn-success" type="submit">
                 Salvar</button>
             <a href="/recurso" class="btn btn-danger">

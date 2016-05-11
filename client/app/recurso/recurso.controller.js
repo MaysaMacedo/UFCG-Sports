@@ -73,6 +73,19 @@ angular.module('finalnodeApp').controller('RecursoCtrl', function($scope, $http,
         });
     };
 
+    $scope.addHorario = function() {
+        var length = $scope.recurso.horariosDisponiveis.length
+        var novoHorario = $scope.recurso.horariosDisponiveis[length-1]+1;
+        if (novoHorario === 24) {
+            novoHorario = 0;
+        }
+        $scope.recurso.horariosDisponiveis.push(novoHorario);
+    };
+
+    $scope.removeHorario = function(index) {
+        $scope.recurso.horariosDisponiveis.splice(index, 1);
+    };
+
     (function main() {
         $http.get(URI_RECURSO).success(function(recursos) {
             $scope.recursos = recursos;
