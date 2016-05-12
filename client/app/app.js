@@ -7,7 +7,7 @@ angular.module('finalnodeApp', [
   'ngRoute',
   'ui.bootstrap',
    'mwl.calendar',
-   //'chart.js'
+   'chart.js'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
