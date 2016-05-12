@@ -1,7 +1,7 @@
 <div class="row">
 	<ul class="list-group">
 		<li class="list-group-item" ng-show="noClients()"><strong>Nenhuma reserva cadastrada</strong><br></li>
-		<li class="list-group-item" ng-repeat="reserva in reservas"><strong>{{reserva.nome}}</strong><br>
+		<li class="list-group-item" ng-repeat="reserva in reservas" title="{{reserva.descricao}}"><strong>{{reserva.nome}}</strong><br>
 			<span class="text-muted">{{reserva.email}}</span> <br>
 			<span class="text-muted">Dia {{reserva.data  | date:'dd/MM/yyyy'}}</span>
 			<span class="text-muted"> às {{reserva.hora}}h</span>  <a

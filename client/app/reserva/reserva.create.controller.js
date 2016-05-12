@@ -9,7 +9,7 @@ angular.module('finalnodeApp')
     $scope.minDiaReserva = new Date();
     $scope.maxDiaReserva = new Date();
     $scope.maxDiaReserva.setDate($scope.minDiaReserva.getDate() + 6);
-
+    
     function ordenaReservasPorRecursoEData(reserva1, reserva2) {
       if(reserva1.recurso == reserva2.recurso) {
         return new Date(reserva2.data) - new Date(reserva1.data);
@@ -55,6 +55,9 @@ angular.module('finalnodeApp')
       if($scope.reserva === '') {
         return;
       }
+      $scope.reserva.nome = Auth.getCurrentUser().name;
+      $scope.reserva.email = Auth.getCurrentUser().email;
+
       $scope.reserva.dataLimite = $scope.reserva.data;
       $http.post('/api/reservas', $scope.reserva).then( function() {
         $location.path('/reserva')

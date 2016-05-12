@@ -7,6 +7,8 @@ var validate = require('mongoose-validate')
 
 var RecursoSchema = new Schema({
     nome: { type: String, required: true },
+    minPessoas: { type: Number, required: true },
+    horariosDisponiveis: [Number],
     active: { type:String, required: false},
     private: { type: String, required: false}
 });

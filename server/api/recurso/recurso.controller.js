@@ -65,6 +65,8 @@ exports.update = function(req, res) {
             return res.send(404);
         }
         var updated = _.merge(Recurso, req.body);
+        updated.horariosDisponiveis = _.map(req.body.horariosDisponiveis, _.clone);
+        updated.markModified('horariosDisponiveis'); // Avisa ao mongoose que o array mudou.
         updated.save(function(err) {
             if (err) {
                 return validationError(res, err);
