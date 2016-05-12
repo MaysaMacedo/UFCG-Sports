@@ -5,10 +5,11 @@ angular.module('finalnodeApp')
 
     var URI_RECURSO = '/api/recursos/';
     var URI_HORARIO = '/api/horarios/';
-    $scope.isAdmin = Auth.isAdmin;
     $scope.recursos = [];
     $scope.recurso = {};
     $scope.horarios = [];
+    $scope.reservas = [];
+    $scope.temReserva = false;
 
 
     $scope.idRecursosLabels = [];
@@ -37,7 +38,21 @@ angular.module('finalnodeApp')
       };
     };
 
+    $scope.getUltimaReserva = function(){
+      var menor = $scope.reservas[0];
+      $scope.reservas.forEach(function(reserva){
+        if (reserva.data < menor.data){
+            menor = reserva;
+        }
+      });
+      this.ultimaReserva = menor;
+      this.dataUltimaReserva = this.getDataUltimaReserva();
+    }
 
+
+    $scope.getDataUltimaReserva = function(){
+      return this.ultimaReserva.data.slice(0,10);
+    }
 
     function indiceDoRecurso(recurso) {
       Array.prototype.index = function (v) {
@@ -69,8 +84,8 @@ angular.module('finalnodeApp')
         return qntdReservas;
     };
 
-    (function main() {
 
+    (function main() {
         $http.get(URI_RECURSO).success(function(recursos) {
             $scope.recursos = recursos;
         });
@@ -78,6 +93,15 @@ angular.module('finalnodeApp')
         $http.get(URI_HORARIO).success(function(horarios) {
             $scope.horarios = horarios;
             recursoReservadoHoje();
+        });
+
+        $http.get('/api/reservas').success(function(reservas) {
+            $scope.reservas = reservas;
+            $scope.getUltimaReserva();
+            if ($scope.reservas.length > 0){
+                $scope.temReserva = true;
+            }
+
         });
 
     })();
