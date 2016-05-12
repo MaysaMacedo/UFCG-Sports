@@ -23,10 +23,6 @@ angular.module('finalnodeApp')
     $scope.show = function(reserva) {
            $location.path('/reserva/'+reserva._id)
       };
-
-    $scope.getUltimaReserva = function(){
-      console.log($scope.reservas);
-    }  
      
     $scope.edit = function(reserva) {
           $location.path('/reserva/edit/'+reserva._id)
