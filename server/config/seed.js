@@ -48,13 +48,13 @@ User.create({
 
 Recurso.find({}).remove(function() {
   Recurso.create([
-    {nome: 'Ginásio', minPessoas: 5, horariosDisponiveis: [5, 6.5, 8, 9.5, 11, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22]},
-    {nome: 'Quadra de Tennis', minPessoas: 1, horariosDisponiveis: [5, 6.5, 8, 9.5, 11, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22]},
-    {nome: 'Quadra de Vôlei de Praia 1', minPessoas: 2, horariosDisponiveis: [5, 6.5, 8, 9.5, 11, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22]},
-    {nome: 'Quadra de Vôlei de Praia 2', minPessoas: 2, horariosDisponiveis: [5, 6.5, 8, 9.5, 11, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22]},
-    {nome: 'Quadra de Futebol de Areia', minPessoas: 5, horariosDisponiveis: [5, 6.5, 8, 9.5, 11, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22]},
-    {nome: 'Mini-campo', minPessoas: 6, horariosDisponiveis: [5, 6.5, 8, 9.5, 11, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22]},
-    {nome: 'Campo', minPessoas: 12, horariosDisponiveis: [5, 6.5, 8, 9.5, 11, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22]}
+    {nome: 'Ginásio', minPessoas: 5, horariosDisponiveis: [5, 6.5, 8, 9.5, 11, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22], active: true},
+    {nome: 'Quadra de Tennis', minPessoas: 1, horariosDisponiveis: [5, 6.5, 8, 9.5, 11, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22], active: true},
+    {nome: 'Quadra de Vôlei de Praia 1', minPessoas: 2, horariosDisponiveis: [5, 6.5, 8, 9.5, 11, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22], active: true},
+    {nome: 'Quadra de Vôlei de Praia 2', minPessoas: 2, horariosDisponiveis: [5, 6.5, 8, 9.5, 11, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22], active: true},
+    {nome: 'Quadra de Futebol de Areia', minPessoas: 5, horariosDisponiveis: [5, 6.5, 8, 9.5, 11, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22], active: true},
+    {nome: 'Mini-campo', minPessoas: 6, horariosDisponiveis: [5, 6.5, 8, 9.5, 11, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22], active: true},
+    {nome: 'Campo', minPessoas: 12, horariosDisponiveis: [5, 6.5, 8, 9.5, 11, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22], active: true}
     ], function() {
       console.log('Recursos esportivos populados com sucesso!');
     }
