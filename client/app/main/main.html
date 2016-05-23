@@ -1,6 +1,7 @@
 <div class="alert alert-info" ng-show="temReserva && !isAdmin">
   <strong>Sua próxima reserva é em {{dataUltimaReserva}} às {{ultimaReserva.hora}} horas em {{ultimaReserva.recurso}}</strong> 
 </div>
+
 <div class="row" >
     <div class="col-lg-12">
         <h1 class="page-header">
@@ -13,23 +14,110 @@
         </ol>
     </div>
 </div>
-<!-- /.row -->
-<div class="row" ng-repeat="recursoEsportivo in recursos | orderBy: 'nome'">
-    <div class="col-lg-12 col-md-12">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                    
-                <strong>{{recursoEsportivo.nome}}</strong>
-                    
-                <a style="color:#263238;" class="pull-right" href="/main/show/{{recursoEsportivo._id}}" ng-mouseover="mouseOver = ' Visualizar Calendário'"+ ng-mouseleave="mouseOver = ''">
-                    <span class="fa fa-calendar custom"><strong>{{mouseOver}}</strong></span>
-                </a>
-            </div>
 
-        </div>
+<div>
+<md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex-xs flex-gt-xs="50" layout="column">
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{recursos[0].nome}}</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-sm card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button href="/main/show/{{recursos[0]._id}}">Calendário</md-button>
+        </md-card-actions>
+      </md-card>
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{recursos[1].nome}}</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="space-between">
+          <div class="md-media-sm card-media"></div>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button href="/main/show/{{recursos[1]._id}}">Calendário</md-button>
+        </md-card-actions>
+        </md-card-content>
+      </md-card>
     </div>
-
+    <div flex-xs flex-gt-xs="50" layout="column">
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{recursos[2].nome}}</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-sm card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button href="/main/show/{{recursos[2]._id}}">Calendário</md-button>
+        </md-card-actions>
+      </md-card>
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{recursos[3].nome}}</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-sm card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button href="/main/show/{{recursos[3]._id}}">Calendário</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+    <div flex-xs flex-gt-xs="50" layout="column">
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{recursos[4].nome}}</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-sm card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button href="/main/show/{{recursos[4]._id}}">Calendário</md-button>
+        </md-card-actions>
+      </md-card>
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{recursos[5].nome}}</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-sm card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button href="/main/show/{{recursos[5]._id}}">Calendário</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+    <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{recursos[6].nome}}</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-sm card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button href="/main/show/{{recursos[6]._id}}">Calendário</md-button>
+        </md-card-actions>
+    </md-card>
+  </md-content>
 </div>
+
+
 <!-- /.row -->
 <div class="row">
     <div class="col-lg-12">

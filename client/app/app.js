@@ -6,9 +6,12 @@ angular.module('finalnodeApp', [
   'ngSanitize',
   'ngRoute',
   'ui.bootstrap',
-  'mwl.calendar'
+  'mwl.calendar',
+  'chart.js',
+  'ngMaterial', 
+  'angular.filter'
 ])
-  .config(function ($routeProvider, $locationProvider, $httpProvider) {
+  .config(function ($routeProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
     $routeProvider
       .when('/404', {
         templateUrl : 'components/errors/404.html'
@@ -24,6 +27,9 @@ angular.module('finalnodeApp', [
     $httpProvider.interceptors.push('authInterceptor');
     $httpProvider.interceptors.push('httpRequestInterceptor');
     $httpProvider.interceptors.push('apiKeyInterceptor');
+    $mdThemingProvider.theme('default')
+    .primaryPalette('pink')
+    .accentPalette('grey');
   })
   .factory('httpRequestInterceptor', function ($q, $location) {
     return {
