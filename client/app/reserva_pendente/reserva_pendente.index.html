@@ -1,4 +1,42 @@
-<div class="row">
+<div class="row" ng-repeat="reserva_pendente in reservas_pendentes | groupBy:4">
+<md-content>
+    <div class="col-xs-3 letter-box" ng-repeat="reserva in reserva_pendente" >
+      <md-card >
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{reserva.nome}}</span>
+            <span class="md-subhead">Inscritos {{ reserva.qtdPessoas }} / {{ reserva.qtdMinimaPessoas }}</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-sm card-media"></div>
+          </md-card-title-media>
+          </md-card-title>
+         <md-card-actions layout="row" layout-align="end center">
+         	<a ng-click="edit(reserva)" class="show">
+				<span class="glyphicon glyphicon glyphicon-pencil pull-right"></span>
+			</a>
+
+			<a ng-click="show(reserva)" class="show">
+				<span class="glyphicon glyphicon-th-large pull-right"></span>
+			</a> 
+
+			<a ng-click="delete(reserva)" class="trash">
+          		<span class="glyphicon glyphicon-trash pull-right"></span>
+			</a> 
+
+        </md-card-actions>
+        
+        </md-card>
+         </div>
+</md-content>
+	    
+</div>
+<div>
+	<a class="btn btn-default btn-lg btn-register" href="/reserva_pendente/new">Criar reserva pendente</a>
+</div>
+
+
+<!-- <div class="row">
 	<ul class="list-group">
 		<li class="list-group-item" ng-show="noReserves()"><strong>Nenhuma reserva pendente cadastrada</strong><br></li>
 		<li class="list-group-item" ng-repeat="reserva_pendente in reservas_pendentes"><strong>{{reserva_pendente.nome}} </strong> <br>
@@ -14,4 +52,4 @@
 				class="glyphicon glyphicon glyphicon-pencil pull-right"></span></a></li>
 	</ul>
 	<a class="btn btn-default btn-lg btn-register" href="/reserva_pendente/new">Criar reserva pendente</a>
-</div>
+</div> -->

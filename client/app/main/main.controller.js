@@ -23,12 +23,11 @@ angular.module('finalnodeApp')
       for (var i = 0; i < $scope.horarios.length ; i++) {
         var horarioData = new Date($scope.horarios[i].data);
         
-        if(horarioData.setHours(0,0,0,0) == hoje.setHours(0,0,0,0)) {   
+        if(horarioData.setHours(0,0,0,0) == hoje.setHours(0,0,0,0)) { 
             if(jaExisteRecursoNoGrafico($scope.horarios[i].recurso)) {
                 $scope.dataDoughnut[indiceDoRecurso($scope.horarios[i].recurso)]+1;          
             } else {
-                $scope.idRecursosLabels.push($scope.horarios[i].recurso);
-                
+                $scope.idRecursosLabels.push($scope.horarios[i].recurso);          
                 $http.get(URI_RECURSO + $scope.horarios[i].recurso).success(function(recurso) {
                     $scope.labelsDoughnut.push(recurso.nome);
                });
@@ -36,6 +35,7 @@ angular.module('finalnodeApp')
             }   
         }
       };
+
     };
 
     $scope.getUltimaReserva = function(){
@@ -93,6 +93,7 @@ angular.module('finalnodeApp')
         $http.get(URI_HORARIO).success(function(horarios) {
             $scope.horarios = horarios;
             recursoReservadoHoje();
+
         });
 
         $http.get('/api/reservas').success(function(reservas) {

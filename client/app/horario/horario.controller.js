@@ -123,9 +123,7 @@ angular.module('finalnodeApp').controller('HorarioCtrl', function($scope, $http,
         if ($routeParams.idRecurso) {
             $http.get(URI_RECURSO + $routeParams.idRecurso).success(function(recurso) {
                 $scope.recurso = recurso;
-
             });           
-            
          };
     })();
 });

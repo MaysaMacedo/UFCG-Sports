@@ -1,48 +1,51 @@
-<div class="form-group"
-	ng-class="{ 'has-success': form.name.$valid && submitted,
+<div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
                                             'has-error': form.name.$invalid && submitted }">
-	<label>Nome</label> <input ng-readonly="readOnly" type="text" name="name" class="form-control"
-		ng-model="reserva_pendente.nome" required />
-	<p class="help-block" ng-show="form.name.$error.required && submitted">A
-		Nome é obrigatório</p>
+    <label>Nome</label>
+    <input ng-readonly="readOnly" type="text" name="name" class="form-control" ng-model="reserva_pendente.nome" required />
+    <p class="help-block" ng-show="form.name.$error.required && submitted">A Nome é obrigatório</p>
 </div>
-
-<div class="form-group"
-	ng-class="{ 'has-success': form.email.$valid && submitted,
+<div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
                                             'has-error': form.email.$invalid && submitted }">
-	<label>Email</label> <input ng-readonly="readOnly" type="email" name="email"
-		class="form-control" ng-model="reserva_pendente.email" required
-		mongoose-error />
-	<p class="help-block" ng-show="form.email.$error.email && submitted">
-		Não parece com um email válido.</p>
-	<p class="help-block" ng-show="form.email.$error.required && submitted">Qual é o seu endereço de email?</p>
-	<p class="help-block" ng-show="form.email.$error.mongoose">{{errors.email }}</p>
+    <label>Email</label>
+    <input ng-readonly="readOnly" type="email" name="email" class="form-control" ng-model="reserva_pendente.email" required mongoose-error />
+    <p class="help-block" ng-show="form.email.$error.email && submitted">
+        Não parece com um email válido.</p>
+    <p class="help-block" ng-show="form.email.$error.required && submitted">Qual é o seu endereço de email?</p>
+    <p class="help-block" ng-show="form.email.$error.mongoose">{{errors.email }}</p>
 </div>
-
-<div class="form-group"
-	ng-class="{ 'has-success': form.name.$valid && submitted,
-                                            'has-error': form.name.$invalid && submitted }">
-	<label>Instalação esportiva</label> <input type="text" name="name" class="form-control" ng-model="reserva_pendente.recurso" required/>
-	<p class="help-block" ng-show="form.name.$error.required && submitted">A
-		Instalação esportiva é obrigatório</p>
+<div class="form-group" ng-class="{ 'has-success': form.recurso.$valid && submitted,
+                                            'has-error': form.recurso.$invalid && submitted }">
+    <label>Recurso esportivo</label>
+    <select ng-readonly="readOnly" name="recurso" class="form-control" ng-model="reserva_pendente.recurso" required ng-change="selecionaHorarios(reserva_pendente.recurso)">
+        <option ng-repeat="recurso in recursosEsportivos" value="{{recurso._id}}" >{{recurso.nome}}</option>
+    </select>
+    <p class="help-block" ng-show="form.recurso.$error.required && submitted">A Instalação esportiva é obrigatório</p>
 </div>
-
-<div > 
-	<div style="float: left;">
-		<label>Data</label> 
-		<input type = "date" name = "data" id ="data" ng-model="reserva_pendente.data" required/> <br/> 
-	</div>
-
-	<div style="float: right, position: relative;">
-		<label>Horário</label> 
-		<input type=number min=6 max=20 style="height: 40px;" ng-model="reserva_pendente.hora" required> 
-	</div>
-
-	<div style="float: right, position: relative;">
-		<label>Pessoas Inscritas</label> 
-		<input type=number min=0 max=22 style="height: 40px;" ng-model="reserva_pendente.qtdPessoas" required> / <input type=number min=0 max=22 style="height: 40px;" ng-model="reserva_pendente.qtdMinimaPessoas" required> 
-	</div>
-	
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-2">
+            <label>Data</label>
+            <input ng-readonly="readOnly" class="form-control" type="date" name="data" id="data" ng-model="reserva_pendente.data" required/>
+        </div>
+        <div class="col-md-1">
+            <label>Horário</label>
+            <select ng-readonly="readOnly" name="hora" class="form-control" ng-model="reserva_pendente.hora" required>
+                <option ng-repeat="hora in horariosDisponiveis" value="{{hora}}">{{hora}}</option>
+            </select>
+        </div>
+    </div>
 </div>
-
-<br></br>
+<label>Pessoas Inscritas</label>
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-1">
+            <input ng-readonly="readOnly" class="form-control" type=number min=0 max=22 ng-model="reserva_pendente.qtdPessoas" required>
+        </div>
+        <div class="col-md-1">
+            <center>de</center>
+        </div>
+        <div class="col-md-1">
+            <input ng-readonly="readOnly" class="form-control" type=number min=0 max=22 ng-model="reserva_pendente.qtdMinimaPessoas" required>
+        </div>
+    </div>
+</div>
