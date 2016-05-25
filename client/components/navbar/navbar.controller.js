@@ -25,6 +25,12 @@ angular.module('finalnodeApp')
 				'icon' : 'plus',
 				'admin': true
 			}, {
+				'title' : 'Histórico de Reservas',
+				'link' : '/historico',
+				'auth' : true,
+				'icon' : 'list-ul',
+				'admin': true
+			}, {
 				'title' : 'Horários',
 				'link' : '/horario',
 				'auth' : true,
