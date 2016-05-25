@@ -33,25 +33,16 @@
                 <option ng-repeat="hora in horariosDisponiveis" value="{{hora}}">{{hora}}</option>
             </select>
         </div>
+	</div>	
     </div>
 </div>
-<div > 
-	<div style="float: left;">
-		<label>Data</label> 
-		<input type = "date" name = "data" id ="data" ng-model="reserva_pendente.data" required/> <br/> 
-	</div>
+	<div style="float: right, position: relative;">
 
-	<div style="float: right, position: relative;">
-		<label>Horário</label> 
-		<input type=number min=6 max=20 style="height: 40px;" ng-model="reserva_pendente.hora" required> 
-	</div>
-<br>
-	<div style="float: right, position: relative;">
+		            <div style="float: right, position: relative;">
 		<label>Quantidade Mínima de Pessoas</label> 
 		<input type=number min=0 max=22 style="height: 40px;" ng-model="reserva_pendente.qtdMinimaPessoas" required> 
+		</div>
 
-</div>
-	<div style="float: right, position: relative;">
 
 		<label>Quantidade de Pessoas</label> 
 	
