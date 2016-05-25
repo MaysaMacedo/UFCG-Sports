@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 var validate = require('mongoose-validate')
 
 var ReservaPendenteSchema = new Schema({ 
-  recurso: { type: Number, required: true},
+  recurso: { type: Schema.Types.ObjectId, ref: 'Recurso' },
   qtdPessoas: {type: Number},
   qtdMinimaPessoas: {type:Number},
   data: { type: Date, required: true},
