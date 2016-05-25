@@ -90,7 +90,5 @@ angular.module('finalnodeApp')
       return $scope.userIDToName[usuarioID];
     }
 
-    (function main() {
-      carregarInformacoes();
-    })();
+    carregarInformacoes();
   });
