@@ -8,16 +8,22 @@
 <div class="row">
 	<ul class="list-group">
 		<li class="list-group-item" ng-show="noClients()"><strong>Nenhuma reserva cadastrada</strong><br></li>
-		<li class="list-group-item" ng-repeat="reserva in reservas" title="{{reserva.descricao}}"><strong>{{reserva.nome}}</strong><br>
-			<span class="text-muted">{{reserva.email}}</span> <br>
+		<li class="list-group-item" ng-repeat="reserva in reservas" title="{{reserva.descricao}}">
+			<strong>{{reserva.recurso}}</strong>
+			<br>
 			<span class="text-muted">Dia {{reserva.data  | date:'dd/MM/yyyy'}}</span>
-			<span class="text-muted"> às {{reserva.hora}}h</span>  <a
-			ng-click="delete(reserva)" class="trash"><span
-				class="glyphicon glyphicon-trash pull-right"></span></a> <a
-			ng-click="show(reserva)" class="show"><span
-				class="glyphicon glyphicon-th-large pull-right"></span></a> <a
-			ng-click="edit(reserva)" class="show"><span
-				class="glyphicon glyphicon glyphicon-pencil pull-right"></span></a></li>
+			<span class="text-muted"> às {{reserva.hora}}h</span>  <br>
+			<span class="text-muted">Daqui {{quantosDiasFaltam(reserva.data)}} dia(s)</span>
+			<a ng-click="delete(reserva)" class="trash">
+				<span class="glyphicon glyphicon-trash pull-right"></span>
+			</a>
+			<a ng-click="show(reserva)" class="show">
+				<span class="glyphicon glyphicon-th-large pull-right"></span>
+			</a> 
+			<a ng-click="edit(reserva)" class="show">
+				<span class="glyphicon glyphicon glyphicon-pencil pull-right"></span>
+			</a>
+		</li>
 	</ul>
 	<a class="btn btn-default btn-lg btn-register" href="/reserva/new">
 		Criar reserva </a>

@@ -15,6 +15,12 @@ angular.module('finalnodeApp')
       return $scope.reservas.length === 0
     }
 
+    $scope.quantosDiasFaltam = function(dia) {
+      var hoje = new Date();
+      var dataReserva = new Date(dia);
+      return Math.ceil((dataReserva.getTime() - hoje.getTime())/(24*60*60*1000));
+    }
+
     $scope.requirePhone = function () {
       return typeof $scope.user.telefone == 'undefined';
     }
