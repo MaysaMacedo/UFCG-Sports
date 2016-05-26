@@ -5,7 +5,7 @@
     <ul class="list-group">
         <li class="list-group-item" style="background:#004D40;color:white;">
             <strong>Nome do Recurso</strong>
-            <a class="pull-right" style="color:white;" href="/recurso/new"
+            <a ng-hide="!isAdmin()" class="pull-right" style="color:white;" href="/recurso/new"
                 ng-mouseover="mouseOver = ' Adicionar Recurso'"
                 ng-mouseleave="mouseOver = ''">
                 <span class="fa fa-plus"><strong>{{mouseOver}}</strong></span>
@@ -17,8 +17,8 @@
         <li class="list-group-item" name="list-group-item-recurso-{{$index}}" ng-repeat="recurso in recursos | orderBy: 'nome'">
             <span ng-hide="recursoEditado"><span>{{recurso.nome}}</span></span>
             <input ng-show="recursoEditado" type="text" name="nome" class="form-control" ng-model="recursoEditado.nome" />
-            <a ng-click="delete(recurso)" title="Deletar" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
-            <a href="/recurso/edit/{{recurso._id}}" title="Editar" class="show"><span class="glyphicon glyphicon glyphicon-pencil pull-right"></span></a>
+            <a ng-hide="!isAdmin()" ng-click="delete(recurso)" title="Deletar" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+            <a ng-hide="!isAdmin()" href="/recurso/edit/{{recurso._id}}" title="Editar" class="show"><span class="glyphicon glyphicon glyphicon-pencil pull-right"></span></a>
         </li>
     </ul>
 </div>

@@ -24,6 +24,13 @@ var UserSchema = new Schema({
   telefone: String
 });
 
+UserSchema.statics.filters = function(){
+  return {
+    name: 'contains',
+    matricula: 'contains'
+  }
+}
+
 /**
  * Virtuals
  */

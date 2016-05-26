@@ -12,6 +12,8 @@ angular.module('finalnodeApp').controller('RecursoCtrl', function($scope, $http,
     var HORARIO_DEFAULT = 5;
 
     $scope.recursos = [];
+
+    $scope.isAdmin = Auth.isAdmin;
     
     $scope.recursosVazio = function() {
         return $scope.recursos.length === 0;

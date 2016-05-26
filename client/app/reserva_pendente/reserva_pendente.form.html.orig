@@ -26,13 +26,14 @@
         </div>
 	</div>	
     </div>
-<label>Pessoas Inscritas</label> {{usuariosSelecionados.length}}\{{qtdMinimaPessoas}}
-<div class="form-group" ng-hide="isShow()">
-    <input type="text" ng-model="asyncSelected" typeahead-on-select="onSelect($item, $model, $label)" uib-typeahead="user as user.name for user in getUserSelected($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control">
-    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
-    <div ng-show="noResults">
-        <i class="glyphicon glyphicon-remove"></i> Não encontrado
-    </div>
+</div>
+<<<<<<< HEAD
+	<div style="float: right, position: relative;">
+
+		            <div style="float: right, position: relative;">
+		<label>Quantidade Mínima de Pessoas</label> 
+		<input type=number min=0 max=22 style="height: 40px;" ng-model="reserva_pendente.qtdMinimaPessoas" required> 
+		</div>
 
 
 		<label>Quantidade de Pessoas</label> 
@@ -51,11 +52,23 @@
                   <span class="glyphicon glyphicon-plus"></span>
               </button>
           </span>
+      </div>
+	<p></p>
+	</div>
+=======
+<label>Pessoas Inscritas</label> {{usuariosSelecionados.length}}\{{qtdMinimaPessoas}}
+<div class="form-group" ng-hide="isShow()">
+    <input type="text" ng-model="asyncSelected" typeahead-on-select="onSelect($item, $model, $label)" uib-typeahead="user as user.name for user in getUserSelected($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control">
+    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+    <div ng-show="noResults">
+        <i class="glyphicon glyphicon-remove"></i> Não encontrado
+    </div>
 </div>
 <div class="form-group">
     <li class="list-group-item" name="list-group-item-user-{{$index}}" ng-repeat="user in usuariosSelecionados | orderBy: 'name'">
         <span>{{user.name}}</span>
         <a ng-click="deleteUser(user)" title="Deletar" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
     </li>
-	</div>
+</div>
 
+>>>>>>> Selecao dinamica de usuarios em reserva pendente

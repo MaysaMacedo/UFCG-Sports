@@ -5,6 +5,7 @@ var User = require('./user.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
+var Utils = require('../../components/utils')
 
 var validationError = function(res, err) {
   return res.json(422, err);
@@ -15,10 +16,29 @@ var validationError = function(res, err) {
  * restriction: 'admin'
  */
 exports.index = function(req, res) {
-  User.find({}, '-salt -hashedPassword', function (err, users) {
-    if(err) return res.send(500, err);
-    res.json(200, users);
-  });
+  if (req.query.name) {
+    var query = User.find().select(
+      {
+        'name': 1, 
+        '_id':1, 
+        'email': 1,
+        'google': 1, 
+        'matricula': 1, 
+        'telefone': 1
+      });
+    Utils.applyFilters(query, User.filters(), req.query);
+    query.exec(function(err, users) {
+      if (err) {
+        return handleError(res, err);
+      }
+      return res.json(200, users);
+    });
+  } else {
+    User.find({}, '-salt -hashedPassword', function (err, users) {
+      if(err) return res.send(500, err);
+      res.json(200, users);
+    });
+  }
 };
 
 /**

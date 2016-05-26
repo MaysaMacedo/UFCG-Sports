@@ -6,12 +6,11 @@ var validate = require('mongoose-validate')
 
 var ReservaPendenteSchema = new Schema({ 
   recurso: { type: Schema.Types.ObjectId, ref: 'Recurso' },
-  qtdPessoas: {type: Number},
   qtdMinimaPessoas: {type:Number},
   data: { type: Date, required: true},
   hora: { type: Number, required: true},
   nome: { type: String, required: true},
-  email: { type: String, required: true}
+  users: [{ type: Schema.Types.ObjectId, ref: 'User'}],
 });
 
 ReservaPendenteSchema.statics.filters = function(){

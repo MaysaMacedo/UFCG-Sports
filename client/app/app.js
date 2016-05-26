@@ -7,7 +7,6 @@ angular.module('finalnodeApp', [
   'ngRoute',
   'ui.bootstrap',
   'mwl.calendar',
-  'chart.js',
   'ngMaterial', 
   'angular.filter'
 ])

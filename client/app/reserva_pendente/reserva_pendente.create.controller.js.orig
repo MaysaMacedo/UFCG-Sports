@@ -14,10 +14,8 @@ angular.module('finalnodeApp').controller('ReservaPendenteCreateCtrl', function(
 
     $scope.horariosDisponiveis = [];
 
-    $scope.qtdMinimaPessoas = 0;
+<<<<<<< HEAD
     $scope.reserva_pendente.qtdPessoas = 0;
-    
-    $scope.usuariosSelecionados = [];
 
     $scope.diminuiCount = function(){
       if ($scope.reserva_pendente.qtdPessoas > 0){
@@ -28,6 +26,11 @@ angular.module('finalnodeApp').controller('ReservaPendenteCreateCtrl', function(
     $scope.aumentaCount = function(){
       $scope.reserva_pendente.qtdPessoas++;
     }
+=======
+    $scope.qtdMinimaPessoas = 0;
+
+    $scope.usuariosSelecionados = [];
+>>>>>>> Selecao dinamica de usuarios em reserva pendente
 
     $scope.selecionaHorarios = function(id) {
         var recurso = _.where($scope.recursosEsportivos, { _id: id })[PRIMEIRO_INDICE];

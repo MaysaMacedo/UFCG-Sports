@@ -37,6 +37,8 @@ exports.update = function(req, res) {
     if (err) { return handleError(res, err); }
     if(!reserva) { return res.send(404); }
     var updated = _.merge(reserva, req.body);
+    updated.users = _.map(req.body.users, _.clone);
+    updated.markModified('users'); // Avisa ao mongoose que o array mudou.
     updated.save(function (err) {
       if (err) { return validationError(res, err); }
       return res.json(200, reserva);
