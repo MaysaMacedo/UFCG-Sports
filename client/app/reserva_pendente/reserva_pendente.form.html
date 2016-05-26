@@ -33,29 +33,11 @@
     <div ng-show="noResults">
         <i class="glyphicon glyphicon-remove"></i> Não encontrado
     </div>
-
-
-		<label>Quantidade de Pessoas</label> 
-	
-			</p><div class="input-group">
-          <span class="input-group-btn">
-              <button type="button" class="btn btn-danger btn-number"  ng-click="diminuiCount()">
-                <span class="glyphicon glyphicon-minus"></span>
-              </button>
-          </span>
-
-          <input type="text" name="quant[2]" class="form-control input-number" ng-model="reserva_pendente.qtdPessoas" min="1" max="100">
-
-          <span class="input-group-btn">
-              <button type="button" class="btn btn-success btn-number" ng-click="aumentaCount()" data-type="plus" data-field="quant[2]">
-                  <span class="glyphicon glyphicon-plus"></span>
-              </button>
-          </span>
 </div>
 <div class="form-group">
     <li class="list-group-item" name="list-group-item-user-{{$index}}" ng-repeat="user in usuariosSelecionados | orderBy: 'name'">
         <span>{{user.name}}</span>
         <a ng-click="deleteUser(user)" title="Deletar" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
     </li>
-	</div>
+</div>
 

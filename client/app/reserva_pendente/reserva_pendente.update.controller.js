@@ -3,7 +3,6 @@
 angular.module('finalnodeApp').controller('ReservaPendenteUpdateCtrl', function($scope, $http, $routeParams, $location, Auth) {
     var URI_RECURSO = '/api/recursos/';
 
-
     var URI_USER = '/api/users/';
 
     var self = this;
