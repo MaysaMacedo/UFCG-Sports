@@ -12,8 +12,8 @@
 			<strong>{{reserva.recurso}}</strong>
 			<br>
 			<span class="text-muted">Dia {{reserva.data  | date:'dd/MM/yyyy'}}</span>
-			<span class="text-muted"> às {{reserva.hora}}h</span>  <br>
-			<span class="text-muted">Daqui {{quantosDiasFaltam(reserva.data)}} dia(s)</span>
+			<span class="text-muted"> às {{reserva.hora}}h</span>
+			<span class="text-muted" ng-show="quantosDiasFaltam(reserva.data) > 0"><br>Daqui {{quantosDiasFaltam(reserva.data)}} dia(s)</span>
 			<a ng-click="delete(reserva)" class="trash">
 				<span class="glyphicon glyphicon-trash pull-right"></span>
 			</a>
