@@ -8,11 +8,7 @@ angular.module('finalnodeApp')
 
     $http.get('/api/reservas').success(function(reservas) {
       $scope.reservas = reservas;
-      // $scope.user.telefone = '9953-6749';
       $scope.user = Auth.getCurrentUser();
-      console.log($scope.user)
-      console.log($scope.user._id);
-      console.log($scope.user.telefone);
     });
 
     $scope.noClients = function() {
@@ -24,7 +20,6 @@ angular.module('finalnodeApp')
     }
 
     $scope.addPhone = function(user) {
-      console.log('adding phone ' + $scope.phone);
       $scope.user.telefone = $scope.phone;
       var id = $scope.user._id;
       $http.put('/api/users/'+id, $scope.user);
