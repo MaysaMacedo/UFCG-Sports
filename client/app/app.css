@@ -45,6 +45,10 @@
 	background: none;
 }
 
+.input-group {
+    width: 155px;
+}
+
 .update .form-control:read-only:focus {
 	box-shadow: 0 0 0;
 }

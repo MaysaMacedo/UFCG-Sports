@@ -33,19 +33,33 @@
                 <option ng-repeat="hora in horariosDisponiveis" value="{{hora}}">{{hora}}</option>
             </select>
         </div>
+	</div>	
     </div>
 </div>
-<label>Pessoas Inscritas</label>
-<div class="form-group">
-    <div class="row">
-        <div class="col-md-1">
-            <input ng-readonly="readOnly" class="form-control" type=number min=0 max=22 ng-model="reserva_pendente.qtdPessoas" required>
-        </div>
-        <div class="col-md-1">
-            <center>de</center>
-        </div>
-        <div class="col-md-1">
-            <input ng-readonly="readOnly" class="form-control" type=number min=0 max=22 ng-model="reserva_pendente.qtdMinimaPessoas" required>
-        </div>
-    </div>
-</div>
+	<div style="float: right, position: relative;">
+
+		            <div style="float: right, position: relative;">
+		<label>Quantidade Mínima de Pessoas</label> 
+		<input type=number min=0 max=22 style="height: 40px;" ng-model="reserva_pendente.qtdMinimaPessoas" required> 
+		</div>
+
+
+		<label>Quantidade de Pessoas</label> 
+	
+			</p><div class="input-group">
+          <span class="input-group-btn">
+              <button type="button" class="btn btn-danger btn-number"  ng-click="diminuiCount()">
+                <span class="glyphicon glyphicon-minus"></span>
+              </button>
+          </span>
+
+          <input type="text" name="quant[2]" class="form-control input-number" ng-model="reserva_pendente.qtdPessoas" min="1" max="100">
+
+          <span class="input-group-btn">
+              <button type="button" class="btn btn-success btn-number" ng-click="aumentaCount()" data-type="plus" data-field="quant[2]">
+                  <span class="glyphicon glyphicon-plus"></span>
+              </button>
+          </span>
+      </div>
+	<p></p>
+	</div>

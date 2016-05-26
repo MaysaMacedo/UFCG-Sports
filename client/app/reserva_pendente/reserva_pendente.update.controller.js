@@ -16,6 +16,17 @@ angular.module('finalnodeApp').controller('ReservaPendenteUpdateCtrl', function(
         $http.delete('/api/reservasPendentes/' + reserva_pendente._id);
         $location.path('/reserva_pendente')
     };
+
+    $scope.diminuiCount = function(){
+      if ($scope.reserva_pendente.qtdPessoas > 0){
+        $scope.reserva_pendente.qtdPessoas--;
+      }
+    }
+
+    $scope.aumentaCount = function(){
+      $scope.reserva_pendente.qtdPessoas++;
+    }
+
     $scope.isAdmin = function() {
         return Auth.isAdmin()
     }

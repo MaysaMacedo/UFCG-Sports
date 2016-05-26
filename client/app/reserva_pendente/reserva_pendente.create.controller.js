@@ -1,4 +1,3 @@
-'use strict';
 
 angular.module('finalnodeApp').controller('ReservaPendenteCreateCtrl', function($scope, $http, $location, Auth) {
     var URI_RECURSO = '/api/recursos/';
@@ -12,6 +11,18 @@ angular.module('finalnodeApp').controller('ReservaPendenteCreateCtrl', function(
     $scope.errors = {};
 
     $scope.horariosDisponiveis = [];
+
+    $scope.reserva_pendente.qtdPessoas = 0;
+
+    $scope.diminuiCount = function(){
+      if ($scope.reserva_pendente.qtdPessoas > 0){
+        $scope.reserva_pendente.qtdPessoas--;
+      }
+    }
+
+    $scope.aumentaCount = function(){
+      $scope.reserva_pendente.qtdPessoas++;
+    }
 
     $scope.selecionaHorarios = function(id) {
       var recurso = _.where($scope.recursosEsportivos, {_id: id})[PRIMEIRO_INDICE];
