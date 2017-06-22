@@ -10,7 +10,8 @@ var RecursoSchema = new Schema({
     minPessoas: { type: Number, required: true },
     horariosDisponiveis: [Number],
     active: { type:String, required: false},
-    private: { type: String, required: false}
+    private: { type: String, required: false},
+    dbTime:  [Number]
 });
 
 RecursoSchema.statics.filters = function() {

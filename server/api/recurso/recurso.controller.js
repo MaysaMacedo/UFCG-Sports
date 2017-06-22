@@ -41,14 +41,21 @@ exports.show = function(req, res) {
 
 // Creates a new Recurso in the DB.
 exports.create = function(req, res) {
+  var t0 = new Date().getTime();
+
     Recurso.create(req.body, function(err, Recurso) {
         if (err) {
+          console.log(err.message);
             return validationError(res, err);
         }
         Recurso.save(function(err, Recurso) {
-            if (err) return validationError(err);
+          var t1 = new Date().getTime() - t0;
+          Recurso['dbTime'].push(t1)
+
+          console.log("Call to doSomething took " + (t1) + " milliseconds.")
+          if (err) return validationError(err);
+          return res.status(201).json(Recurso);
         })
-        return res.json(201, Recurso);
     });
 };
 
