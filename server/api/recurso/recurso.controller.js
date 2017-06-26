@@ -17,6 +17,7 @@ function findById(req) {
 // Get list of Recursos
 exports.index = function(req, res) {
     var query = query = Recurso.find()
+
     Utils.applyFilters(query, Recurso.filters(), req.query)
     query.exec(function(err, Recursos) {
         if (err) {
@@ -28,6 +29,8 @@ exports.index = function(req, res) {
 
 // Get a single Recurso
 exports.show = function(req, res) {
+  var t0 = new Date().getTime();
+
     findById(req).exec(function(err, Recurso) {
         if (err) {
             return handleError(res, err);
@@ -35,6 +38,9 @@ exports.show = function(req, res) {
         if (!Recurso) {
             return res.send(404);
         }
+        var t1 = new Date().getTime() - t0;
+        console.log("Call to doSomething took " + (t1) + " milliseconds.");
+        Recurso['dbTime'].push(t1);
         return res.json(Recurso)
     });
 };
